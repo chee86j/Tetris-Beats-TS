@@ -1,15 +1,22 @@
 import Board from "./components/Board";
-import { EmptyCell } from "./types";
-
-const board = Array(20)
-  .fill(null)
-  .map(() => Array(12).fill(EmptyCell.Empty));
+import UpcomingBlocks from "./components/UpcomingBlocks";
+import { useTetris } from "./hooks/useTetris";
 
 function App() {
+  const { board, startGame, isPlaying, score, upcomingBlocks } = useTetris();
+
   return (
-    <div className="App">
+    <div className="app">
       <h1>Tetris</h1>
-      <Board currentBoard={board} />;
+      <Board currentBoard={board} />
+      <div className="controls">
+        <h2>Score: {score}</h2>
+        {isPlaying ? (
+          <UpcomingBlocks upcomingBlocks={upcomingBlocks} />
+        ) : (
+          <button onClick={startGame}>New Game</button>
+        )}
+      </div>
     </div>
   );
 }
