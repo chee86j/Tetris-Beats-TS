@@ -1,3 +1,3 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vanilla CSS + Vite
 
-Tetris game built with React, TypeScript and Vite.
+Tetris Clone Built with React, TypeScript, Vanilla CSS and Vite.

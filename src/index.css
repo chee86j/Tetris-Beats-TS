@@ -1,9 +1,32 @@
+:root {
+  --bg-color: rgba(150, 150, 150, 1);
+  --border-left-color: rgba(255, 255, 255, 0.2);
+  --border-top-color: rgba(255, 255, 255, 0.33);
+  --border-right-color: rgba(0, 0, 0, 0.15);
+  --border-bottom-color: rgba(0, 0, 0, 0.5);
+  --tile-size: 20px;
+  --border-width: 5px;
+  --color-0: rgb(200, 200, 200); /* Empty */
+  --color-1: rgb(80, 227, 230); /* I */
+  --color-2: rgb(36, 95, 223); /* J */
+  --color-3: rgb(223, 173, 36); /* L */
+  --color-4: rgb(223, 217, 36); /* O */
+  --color-5: rgb(48, 211, 56); /* S */
+  --color-6: rgb(132, 61, 198); /* T */
+  --color-7: rgb(227, 78, 78); /* Z */
+}
+
+#container {
+  background-color: rgba(79, 26, 109, 0.15);
+}
+
 .app {
   display: grid;
   grid-template-areas:
     ". title ."
     ". game controls";
   grid-template-columns: repeat(3, 1fr);
+  background-color: rgba(28, 71, 123, 0.7);
 }
 
 h1 {
@@ -13,6 +36,7 @@ h1 {
 
 button {
   padding: 4px;
+  border-radius: 5px;
 }
 
 .board {
@@ -38,9 +62,13 @@ button {
 }
 
 .cell {
-  width: 30px;
+  width: var(--tile-size);
   aspect-ratio: 1;
-  border: 1px solid black;
+  border: var(--border-width) solid;
+  border-left-color: var(--border-left-color);
+  border-top-color: var(--border-top-color);
+  border-right-color: var(--border-right-color);
+  border-bottom-color: var(--border-bottom-color);
 }
 
 .cell.hidden {
@@ -48,33 +76,26 @@ button {
 }
 
 .cell.Empty {
-  background-color: rgb(200, 200, 200);
+  background-color: var(--color-0);
 }
-
 .cell.I {
-  background-color: rgb(80, 227, 230);
+  background-color: var(--color-1);
 }
-
 .cell.J {
-  background-color: rgb(36, 95, 223);
+  background-color: var(--color-2);
 }
-
 .cell.L {
-  background-color: rgb(223, 173, 36);
+  background-color: var(--color-3);
 }
-
 .cell.O {
-  background-color: rgb(223, 217, 36);
+  background-color: var(--color-4);
 }
-
 .cell.S {
-  background-color: rgb(48, 211, 56);
+  background-color: var(--color-5);
 }
-
 .cell.T {
-  background-color: rgb(132, 61, 198);
+  background-color: var(--color-6);
 }
-
 .cell.Z {
-  background-color: rgb(227, 78, 78);
+  background-color: var(--color-7);
 }
