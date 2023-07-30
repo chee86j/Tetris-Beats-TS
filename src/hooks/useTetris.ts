@@ -13,6 +13,7 @@ enum TickSpeed {
   Normal = 800,
   Sliding = 100,
   Fast = 50,
+  Instantly = 0.5, // Added Instantly for hard drop
 }
 
 export function useTetris() {
@@ -21,6 +22,7 @@ export function useTetris() {
   const [isCommitting, setIsCommitting] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [tickSpeed, setTickSpeed] = useState<TickSpeed | null>(null);
+  const [gameOver, setGameOver] = useState(false);
 
   const [
     { board, droppingRow, droppingColumn, droppingBlock, droppingShape },
@@ -38,6 +40,7 @@ export function useTetris() {
     setIsCommitting(false);
     setIsPlaying(true);
     setTickSpeed(TickSpeed.Normal);
+    setGameOver(false);
     dispatchBoardState({ type: "start" });
   }, [dispatchBoardState]);
 
@@ -72,6 +75,7 @@ export function useTetris() {
     if (hasCollisions(board, SHAPES[newBlock].shape, 0, 3)) {
       setIsPlaying(false);
       setTickSpeed(null);
+      setGameOver(true);
     } else {
       setTickSpeed(TickSpeed.Normal);
     }
@@ -171,10 +175,14 @@ export function useTetris() {
         isPressingRight = true;
         updateMovementInterval();
       }
+
+      if (event.code === "Space") {
+        setTickSpeed(TickSpeed.Instantly);
+      }
     };
 
     const handleKeyUp = (event: KeyboardEvent) => {
-      if (event.key === "ArrowDown") {
+      if (event.key === "ArrowDown" || event.code === "Space") {
         setTickSpeed(TickSpeed.Normal);
       }
 
@@ -216,6 +224,7 @@ export function useTetris() {
     isPlaying,
     score,
     upcomingBlocks,
+    gameOver,
   };
 }
 
