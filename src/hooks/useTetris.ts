@@ -1,5 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
-import { Block, BlockShape, BoardShape, EmptyCell, SHAPES } from "../types";
+import {
+  Block,
+  BlockShape,
+  BoardShape,
+  EmptyCell,
+  SHAPES,
+  GhostBlock,
+} from "../types";
 import { useInterval } from "./useInterval";
 import {
   useTetrisBoard,
@@ -13,7 +20,7 @@ enum TickSpeed {
   Normal = 800,
   Sliding = 100,
   Fast = 50,
-  Instantly = 0.0001, // Added Instantly for hard drop
+  Instantly = 0.0001,
 }
 
 export function useTetris() {
@@ -23,6 +30,7 @@ export function useTetris() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [tickSpeed, setTickSpeed] = useState<TickSpeed | null>(null);
   const [gameOver, setGameOver] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   const [
     { board, droppingRow, droppingColumn, droppingBlock, droppingShape },
@@ -31,6 +39,9 @@ export function useTetris() {
 
   const startGame = useCallback(() => {
     const startingBlocks = [
+      getRandomBlock(),
+      getRandomBlock(),
+      getRandomBlock(),
       getRandomBlock(),
       getRandomBlock(),
       getRandomBlock(),
@@ -43,6 +54,28 @@ export function useTetris() {
     setGameOver(false);
     dispatchBoardState({ type: "start" });
   }, [dispatchBoardState]);
+
+  const getGhostPosition = (
+    shape: BlockShape,
+    row: number,
+    col: number
+  ): { ghostRow: number; ghostCol: number } => {
+    let ghostRow = row;
+    while (!hasCollisions(board, shape, ghostRow + 1, col)) {
+      ghostRow++;
+    }
+    return { ghostRow, ghostCol: col };
+  };
+
+  const pauseGame = useCallback(() => {
+    setIsPaused(true);
+    setTickSpeed(null);
+  }, []);
+
+  const resumeGame = useCallback(() => {
+    setIsPaused(false);
+    setTickSpeed(TickSpeed.Normal);
+  }, []);
 
   const commitPosition = useCallback(() => {
     if (!hasCollisions(board, droppingShape, droppingRow + 1, droppingColumn)) {
@@ -141,13 +174,14 @@ export function useTetris() {
         isPressingLeft,
         isPressingRight,
       });
-      moveIntervalID = setInterval(() => {
+      moveIntervalID = window.setInterval(() => {
+        // Use window.setInterval to ensure the correct return type
         dispatchBoardState({
           type: "move",
           isPressingLeft,
           isPressingRight,
         });
-      }, 300);
+      }, 300) as unknown as number; // Cast the return value to number
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -209,12 +243,27 @@ export function useTetris() {
 
   const renderedBoard = structuredClone(board) as BoardShape;
   if (isPlaying) {
+    const { ghostRow, ghostCol } = getGhostPosition(
+      droppingShape,
+      droppingRow,
+      droppingColumn
+    );
+
     addShapeToBoard(
       renderedBoard,
       droppingBlock,
       droppingShape,
       droppingRow,
       droppingColumn
+    );
+
+    addShapeToBoard(
+      renderedBoard,
+      GhostBlock,
+      droppingShape,
+      ghostRow,
+      ghostCol,
+      true
     );
   }
 
@@ -225,6 +274,9 @@ export function useTetris() {
     score,
     upcomingBlocks,
     gameOver,
+    pauseGame,
+    resumeGame,
+    isPaused,
   };
 }
 
@@ -247,18 +299,20 @@ function getPoints(numCleared: number): number {
 
 function addShapeToBoard(
   board: BoardShape,
-  droppingBlock: Block,
+  droppingBlock: Block | typeof GhostBlock,
   droppingShape: BlockShape,
   droppingRow: number,
-  droppingColumn: number
+  droppingColumn: number,
+  isGhost?: boolean
 ) {
   droppingShape
     .filter((row) => row.some((isSet) => isSet))
     .forEach((row: boolean[], rowIndex: number) => {
       row.forEach((isSet: boolean, colIndex: number) => {
         if (isSet) {
-          board[droppingRow + rowIndex][droppingColumn + colIndex] =
-            droppingBlock;
+          board[droppingRow + rowIndex][droppingColumn + colIndex] = isGhost
+            ? GhostBlock
+            : droppingBlock;
         }
       });
     });

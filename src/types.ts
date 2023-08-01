@@ -12,7 +12,9 @@ export enum EmptyCell {
   Empty = "Empty",
 }
 
-export type CellOptions = Block | EmptyCell;
+export const GhostBlock = "Ghost";
+
+export type CellOptions = Block | EmptyCell | typeof GhostBlock;
 
 export type BoardShape = CellOptions[][];
 

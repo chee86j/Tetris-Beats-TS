@@ -23,15 +23,21 @@
 .app {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Center the app vertically */
-  background-color: rgba(28, 71, 123, 0.7);
+  justify-content: flex-start;
+  height: 100vh;
+  margin: 1rem;
 }
 
 h1 {
   text-align: center;
   grid-area: title;
+}
+
+body {
+  background: url("https://as2.ftcdn.net/v2/jpg/05/41/58/07/1000_F_541580786_66PRtWuvf5Z2vJl1OemzdD7vK74QYmV8.jpg")
+    no-repeat center center fixed;
+  background-size: cover;
+  margin-bottom: 7rem;
 }
 
 button {
@@ -41,16 +47,15 @@ button {
 
 .game-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .game-board {
-  border: 2px solid black;
   user-select: none;
   display: grid;
   grid-template-columns: repeat(10, var(--tile-size));
-  gap: 1px;
   background-color: var(--bg-color);
 }
 
@@ -58,12 +63,12 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  margin-top: 20px;
+  font-weight: bold;
+  font-size: 2rem;
+  gap: 0;
 }
 
 .start-button button {
-  padding: 10px 20px;
   font-size: 1.2rem;
   background-color: #4caf50;
   color: white;
@@ -73,7 +78,6 @@ button {
 }
 
 .start-button button {
-  padding: 10px 20px;
   font-size: 1.2rem;
   background-color: #4caf50;
   color: white;
@@ -83,12 +87,12 @@ button {
 }
 
 .title {
-  margin-top: 20px;
+  text-align: center;
 }
 
 .title h1 {
   font-size: 8rem;
-  margin-bottom: 20px;
+  margin-bottom: 2px;
 }
 
 .title .t {
@@ -117,20 +121,24 @@ button {
 
 .controls {
   grid-area: controls;
-  margin: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.score {
+  color: rgb(48, 211, 56);
+  margin-bottom: 0;
+}
 .timer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  margin: 1rem;
   font-weight: bold;
-  font-size: large;
+  font-size: 1.5rem;
+  margin-left: 5px;
+  color: rgb(48, 211, 56);
+  margin-bottom: 2rem;
 }
 
 .row {
@@ -138,10 +146,16 @@ button {
 }
 
 .upcoming {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+  flex-direction: column-reverse;
+  justify-content: center;
+  padding: 1rem;
+  transform: scale(0.65);
+  border: rgb(48, 211, 56);
+  border-style: double;
+  margin-top: 0;
 }
 
 .cell {
@@ -154,8 +168,8 @@ button {
   border-bottom-color: var(--border-bottom-color);
 }
 
-.cell.hidden {
-  visibility: hidden;
+.cell.ghost {
+  opacity: 0.2;
 }
 
 .cell.Empty {
