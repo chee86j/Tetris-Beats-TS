@@ -130,6 +130,57 @@ export function useTetris() {
     upcomingBlocks,
   ]);
 
+  const hardDrop = useCallback(() => {
+    let finalRow = droppingRow;
+    while (!hasCollisions(board, droppingShape, finalRow + 1, droppingColumn)) {
+      finalRow++;
+    }
+    const newBoard = structuredClone(board) as BoardShape;
+    addShapeToBoard(
+      newBoard,
+      droppingBlock,
+      droppingShape,
+      finalRow,
+      droppingColumn
+    );
+
+    let numCleared = 0;
+    for (let row = BOARD_HEIGHT - 1; row >= 0; row--) {
+      if (newBoard[row].every((entry) => entry !== EmptyCell.Empty)) {
+        numCleared++;
+        newBoard.splice(row, 1);
+      }
+    }
+
+    const newUpcomingBlocks = structuredClone(upcomingBlocks) as Block[];
+    const newBlock = newUpcomingBlocks.pop() as Block;
+    newUpcomingBlocks.unshift(getRandomBlock());
+
+    if (hasCollisions(board, SHAPES[newBlock].shape, 0, 3)) {
+      setIsPlaying(false);
+      setTickSpeed(null);
+      setGameOver(true);
+    } else {
+      setTickSpeed(TickSpeed.Normal);
+    }
+    setUpcomingBlocks(newUpcomingBlocks);
+    setScore((prevScore) => prevScore + getPoints(numCleared));
+    dispatchBoardState({
+      type: "commit",
+      newBoard: [...getEmptyBoard(BOARD_HEIGHT - newBoard.length), ...newBoard],
+      newBlock,
+    });
+    setIsCommitting(false);
+  }, [
+    board,
+    dispatchBoardState,
+    droppingBlock,
+    droppingColumn,
+    droppingRow,
+    droppingShape,
+    upcomingBlocks,
+  ]);
+
   const gameTick = useCallback(() => {
     if (isCommitting) {
       commitPosition();
@@ -211,7 +262,8 @@ export function useTetris() {
       }
 
       if (event.code === "Space") {
-        setTickSpeed(TickSpeed.Instantly);
+        hardDrop();
+        return;
       }
     };
 
@@ -239,7 +291,7 @@ export function useTetris() {
       clearInterval(moveIntervalID);
       setTickSpeed(TickSpeed.Normal);
     };
-  }, [dispatchBoardState, isPlaying]);
+  }, [dispatchBoardState, isPlaying, hardDrop]);
 
   const renderedBoard = structuredClone(board) as BoardShape;
   if (isPlaying) {
