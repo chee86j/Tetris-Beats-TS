@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,7 +7,20 @@
     <title>Vite + React + TS</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="game-container">
+        <h1>Tetris</h1>
+        <div class="main-container">
+          <div class="game-board"></div>
+          <div class="game-info">
+            <div class="score"></div>
+            <div class="upcoming-blocks"></div>
+            <div class="timer"></div>
+          </div>
+        </div>
+        <div class="start-button"></div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

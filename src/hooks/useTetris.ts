@@ -13,7 +13,7 @@ enum TickSpeed {
   Normal = 800,
   Sliding = 100,
   Fast = 50,
-  Instantly = 0.5, // Added Instantly for hard drop
+  Instantly = 0.0001, // Added Instantly for hard drop
 }
 
 export function useTetris() {
