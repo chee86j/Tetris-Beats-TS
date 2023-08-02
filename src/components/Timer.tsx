@@ -24,7 +24,12 @@ const Timer: React.FC<TimerProps> = ({ isPaused }) => {
     return `${hours}:${minutes}:${seconds}`;
   };
 
-  return <div className="timer">Time: {formatTime(seconds)}</div>;
+  return (
+    <div className="timer">
+      <div>Timer</div>
+      <div>{formatTime(seconds)}</div>
+    </div>
+  );
 };
 
 export default Timer;

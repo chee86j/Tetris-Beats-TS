@@ -1,9 +1,12 @@
+import { useState } from "react";
 import Board from "./components/Board";
 import UpcomingBlocks from "./components/UpcomingBlocks";
 import { useTetris } from "./hooks/useTetris";
 import Timer from "./components/Timer";
+import "./index.css"; // Import your original CSS here
 
 function App() {
+  const [isTetrisEffectTheme, setIsTetrisEffectTheme] = useState(true);
   const {
     board,
     startGame,
@@ -15,8 +18,12 @@ function App() {
     isPaused,
   } = useTetris();
 
+  const toggleTheme = () => {
+    setIsTetrisEffectTheme((prevTheme) => !prevTheme);
+  };
+
   return (
-    <div className="app">
+    <div className={`app ${isTetrisEffectTheme ? "tetris-effect-theme" : ""}`}>
       <div className="title">
         <h1>
           <span className="t">T</span>
@@ -42,6 +49,7 @@ function App() {
               <button onClick={pauseGame}>Pause</button>
             )}
             <button onClick={startGame}>New Game</button>
+            <button onClick={toggleTheme}>Toggle Theme</button>
           </div>
         </div>
       )}

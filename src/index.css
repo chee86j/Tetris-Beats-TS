@@ -14,6 +14,8 @@
   --color-5: rgb(48, 211, 56); /* S */
   --color-6: rgb(132, 61, 198); /* T */
   --color-7: rgb(227, 78, 78); /* Z */
+  --cell-glow-color: rgba(255, 255, 255, 0.5);
+  --pulse-duration: 1s:
 }
 
 #container {
@@ -34,7 +36,7 @@ h1 {
 }
 
 body {
-  background: url("https://as2.ftcdn.net/v2/jpg/05/41/58/07/1000_F_541580786_66PRtWuvf5Z2vJl1OemzdD7vK74QYmV8.jpg")
+  background: url("https://wallpaperaccess.com/full/39615.jpg")
     no-repeat center center fixed;
   background-size: cover;
   margin-bottom: 7rem;
@@ -64,12 +66,12 @@ button {
   flex-direction: column;
   align-items: center;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: rem;
   gap: 0;
 }
 
 .start-button button {
-  font-size: 1.2rem;
+  font-size: xx-large;
   background-color: #4caf50;
   color: white;
   border: none;
@@ -87,7 +89,7 @@ button {
 }
 
 .title {
-  text-align: center;
+  text-align: center;;
 }
 
 .title h1 {
@@ -127,17 +129,21 @@ button {
 }
 
 .score {
-  color: rgb(48, 211, 56);
+  color: rgb(252, 252, 252);
   margin-bottom: 0;
+  font-size: x-large;
+  font-family: Arial, Helvetica, sans-serif;
+  
 }
 .timer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
   margin-left: 5px;
-  color: rgb(48, 211, 56);
+  color: rgb(252, 252, 252);
   margin-bottom: 2rem;
 }
 
@@ -152,8 +158,8 @@ button {
   flex-direction: column-reverse;
   justify-content: center;
   padding: 1rem;
-  transform: scale(0.65);
-  border: rgb(48, 211, 56);
+  transform: scale(0.80);
+  border: rgb(255, 255, 255);
   border-style: double;
   margin-top: 0;
 }
@@ -166,17 +172,37 @@ button {
   border-top-color: var(--border-top-color);
   border-right-color: var(--border-right-color);
   border-bottom-color: var(--border-bottom-color);
+  box-shadow: 0 0 10px var(--cell-glow-color);
+  animation: pulsate var(--pulse-duration) infinite;
+  transform-origin: center;
+  transition: transform var(--pulse-duration) ease-in-out;
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.cell:hover {
+  box-shadow: 0 0 30px var(--cell-glow-color);
 }
 
 .cell.ghost {
   opacity: 0.2;
 }
 
-.cell.Empty {
+/* .cell.Empty {
   background-color: var(--color-0);
-}
+} */
 
-.cell.I {
+/* .cell.I {
   background-color: var(--color-1);
 }
 
@@ -202,4 +228,36 @@ button {
 
 .cell.Z {
   background-color: var(--color-7);
+} */
+
+.cell.Empty {
+  background-color: #333;
+}
+
+.cell.I {
+  background-color: #009999;
+}
+
+.cell.J {
+  background-color: #0071b3;
+}
+
+.cell.L {
+  background-color: #e88a00;
+}
+
+.cell.O {
+  background-color: #cccc00;
+}
+
+.cell.S {
+  background-color: #00cc00;
+}
+
+.cell.T {
+  background-color: #9933cc;
+}
+
+.cell.Z {
+  background-color: #ff4d4d;
 }
