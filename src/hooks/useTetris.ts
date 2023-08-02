@@ -31,6 +31,7 @@ export function useTetris() {
   const [tickSpeed, setTickSpeed] = useState<TickSpeed | null>(null);
   const [gameOver, setGameOver] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [isDropping, setIsDropping] = useState(true);
 
   const [
     { board, droppingRow, droppingColumn, droppingBlock, droppingShape },
@@ -70,11 +71,13 @@ export function useTetris() {
   const pauseGame = useCallback(() => {
     setIsPaused(true);
     setTickSpeed(null);
+    setIsDropping(false);
   }, []);
 
   const resumeGame = useCallback(() => {
     setIsPaused(false);
     setTickSpeed(TickSpeed.Normal);
+    setIsDropping(true);
   }, []);
 
   const commitPosition = useCallback(() => {
@@ -326,6 +329,7 @@ export function useTetris() {
     score,
     upcomingBlocks,
     gameOver,
+    isDropping,
     pauseGame,
     resumeGame,
     isPaused,

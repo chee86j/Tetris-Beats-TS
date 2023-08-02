@@ -37,19 +37,30 @@ function App() {
       </div>
       {isPlaying && (
         <div className="game-container">
-          <Board currentBoard={board} />
+          <div className="next">
+            Next <UpcomingBlocks upcomingBlocks={upcomingBlocks} />{" "}
+          </div>
+          <Board
+            currentBoard={board}
+            isDropping={false}
+            moveShapeDown={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+            dropInterval={0}
+          />
           <div className="game-info">
             <div className="score">Score: {score}</div>
-            <UpcomingBlocks upcomingBlocks={upcomingBlocks} />
-            <Timer isPaused={isPaused} />
-            {isPlaying && isPaused && (
-              <button onClick={resumeGame}>Resume</button>
-            )}
-            {isPlaying && !isPaused && (
-              <button onClick={pauseGame}>Pause</button>
-            )}
-            <button onClick={startGame}>New Game</button>
-            <button onClick={toggleTheme}>Toggle Theme</button>
+            <div className="buttons">
+              <Timer isPaused={isPaused} />
+              {isPlaying && isPaused && (
+                <button onClick={resumeGame}>Resume</button>
+              )}
+              {isPlaying && !isPaused && (
+                <button onClick={pauseGame}>Pause</button>
+              )}
+              <button onClick={startGame}>New Game</button>
+              <button onClick={toggleTheme}>Toggle Theme</button>
+            </div>
           </div>
         </div>
       )}
