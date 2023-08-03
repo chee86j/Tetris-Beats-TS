@@ -5,9 +5,11 @@ interface Props {
 }
 
 function UpcomingBlocks({ upcomingBlocks }: Props) {
+  const reversedUpcomingBlocks = upcomingBlocks.slice().reverse();
+
   return (
     <div className="upcoming">
-      {upcomingBlocks.map((block, blockIndex) => {
+      {reversedUpcomingBlocks.map((block, blockIndex) => {
         const shape = SHAPES[block].shape.filter((row) =>
           row.some((cell) => cell)
         );

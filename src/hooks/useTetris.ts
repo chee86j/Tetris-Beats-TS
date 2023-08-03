@@ -23,6 +23,15 @@ enum TickSpeed {
   Instantly = 0.0001,
 }
 
+function generateNextBlocks(numBlocks: number): Block[] {
+  const blocks: Block[] = [];
+  for (let i = 0; i < numBlocks; i++) {
+    const block = getRandomBlock();
+    blocks.push(block);
+  }
+  return blocks;
+}
+
 export function useTetris() {
   const [score, setScore] = useState(0);
   const [upcomingBlocks, setUpcomingBlocks] = useState<Block[]>([]);
@@ -39,14 +48,7 @@ export function useTetris() {
   ] = useTetrisBoard();
 
   const startGame = useCallback(() => {
-    const startingBlocks = [
-      getRandomBlock(),
-      getRandomBlock(),
-      getRandomBlock(),
-      getRandomBlock(),
-      getRandomBlock(),
-      getRandomBlock(),
-    ];
+    const startingBlocks = generateNextBlocks(6);
     setScore(0);
     setUpcomingBlocks(startingBlocks);
     setIsCommitting(false);
