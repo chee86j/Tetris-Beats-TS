@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-tsparticles": "^1.32.0",
+    "tsparticles": "^1.32.10"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

@@ -3,7 +3,8 @@ import Board from "./components/Board";
 import UpcomingBlocks from "./components/UpcomingBlocks";
 import { useTetris } from "./hooks/useTetris";
 import Timer from "./components/Timer";
-import "./index.css"; // Import your original CSS here
+import ShinyStars from "./components/ShinyStars";
+import "./index.css";
 
 function App() {
   const [isTetrisEffectTheme, setIsTetrisEffectTheme] = useState(true);
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div className={`app ${isTetrisEffectTheme ? "tetris-effect-theme" : ""}`}>
+      <ShinyStars children={undefined} />
       <div className="title">
         <h1>
           <span className="t">T</span>
