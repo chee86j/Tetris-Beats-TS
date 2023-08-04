@@ -4,6 +4,7 @@ import UpcomingBlocks from "./components/UpcomingBlocks";
 import { useTetris } from "./hooks/useTetris";
 import Timer from "./components/Timer";
 import ShinyStars from "./components/ShinyStars";
+import HeldPiece from "./components/HeldPiece";
 import "./index.css";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
     pauseGame,
     resumeGame,
     isPaused,
+    heldBlock,
   } = useTetris();
 
   const toggleTheme = () => {
@@ -39,6 +41,9 @@ function App() {
       </div>
       {isPlaying && (
         <div className="game-container">
+          <div className="held">
+            Hold <HeldPiece block={heldBlock} />
+          </div>
           <div className="next">
             Next <UpcomingBlocks upcomingBlocks={upcomingBlocks} />{" "}
           </div>
