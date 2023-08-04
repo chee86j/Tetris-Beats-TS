@@ -70,8 +70,9 @@ export function useTetris() {
     setIsPlaying(true);
     setTickSpeed(TickSpeed.Normal);
     setGameOver(false);
-    setLevel;
+    setLevel(1);
     dispatchBoardState({ type: "start" });
+    setHeldBlock(null);
   }, [dispatchBoardState]);
 
   const getGhostPosition = (
@@ -99,22 +100,22 @@ export function useTetris() {
   }, []);
 
   const calculateScore = useCallback(
-    (linesCleared: number): number => {
+    (linesCleared: number): { points: number; linesCleared: number } => {
       if (linesCleared === 0) {
-        return 0;
+        return { points: 0, linesCleared: 0 };
       }
       // BPS points for 1, 2, 3, and 4 lines cleared
       const basePoints = [40, 100, 300, 1200];
       // Calculate the points for the given number of lines cleared and level
       const points = basePoints[linesCleared - 1] * (level + 1);
 
-      return points;
+      return { points, linesCleared };
     },
     [level]
   );
 
-  const notifyScore = (points: number) => {
-    toast.success(`Scored ${points} points!`);
+  const notifyScore = (points: number, linesCleared: number) => {
+    toast.success(`Cleared ${linesCleared} lines! Scored ${points} points!`);
   };
 
   const commitPosition = useCallback(() => {
@@ -154,10 +155,10 @@ export function useTetris() {
     }
     setUpcomingBlocks(newUpcomingBlocks);
 
-    const points = calculateScore(numCleared);
+    const { points, linesCleared } = calculateScore(numCleared);
 
     if (points > 0) {
-      notifyScore(points);
+      notifyScore(points, linesCleared);
     }
 
     // Update the score here by adding the points earned from clearing lines
@@ -215,10 +216,10 @@ export function useTetris() {
     }
     setUpcomingBlocks(newUpcomingBlocks);
 
-    const points = calculateScore(numCleared);
+    const { points, linesCleared } = calculateScore(numCleared);
 
     if (points > 0) {
-      notifyScore(points);
+      notifyScore(points, linesCleared);
     }
 
     // Update the score here by adding the points earned from clearing lines

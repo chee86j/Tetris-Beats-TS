@@ -7,6 +7,7 @@ import ShinyStars from "./components/ShinyStars";
 import HeldPiece from "./components/HeldPiece";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import GameOver from "./components/GameOver";
 import "./index.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     upcomingBlocks,
     pauseGame,
     resumeGame,
+    gameOver,
     isPaused,
     heldBlock,
   } = useTetris();
@@ -39,39 +41,47 @@ function App() {
           <span className="i">I</span>
           <span className="s">S</span>
         </h1>
-        {!isPlaying && <button onClick={startGame}>Start Game</button>}
+        {!isPlaying && !gameOver && (
+          <button onClick={startGame}>Start Game</button>
+        )}
       </div>
-      {isPlaying && (
-        <div className="game-container">
-          <div className="next">
-            <div className="held-piece">
-              Hold <HeldPiece block={heldBlock} />
+      {gameOver ? (
+        <GameOver score={score} startGame={startGame} />
+      ) : (
+        isPlaying && (
+          <div className="game-container">
+            <div className="next">
+              <div className="held-piece">
+                Hold <HeldPiece block={heldBlock} />
+              </div>
+              Next <UpcomingBlocks upcomingBlocks={upcomingBlocks} />{" "}
             </div>
-            Next <UpcomingBlocks upcomingBlocks={upcomingBlocks} />{" "}
-          </div>
-          <Board
-            currentBoard={board}
-            isDropping={false}
-            moveShapeDown={function (): void {
-              throw new Error("Function not implemented.");
-            }}
-            dropInterval={0}
-          />
-          <div className="game-info">
-            <div className="score">Score: {score}</div>
-            <div className="buttons">
-              <Timer isPaused={isPaused} />
-              {isPlaying && isPaused && (
-                <button onClick={resumeGame}>Resume</button>
-              )}
-              {isPlaying && !isPaused && (
-                <button onClick={pauseGame}>Pause</button>
-              )}
-              <button onClick={startGame}>New Game</button>
-              <button onClick={toggleTheme}>Toggle Theme</button>
+            <Board
+              currentBoard={board}
+              isDropping={false}
+              moveShapeDown={function (): void {
+                throw new Error("Function not implemented.");
+              }}
+              dropInterval={0}
+            />
+            <div className="game-info">
+              <div className="score">Score: {score}</div>
+              <div className="buttons">
+                <Timer isPaused={isPaused} />
+                {isPlaying && isPaused && (
+                  <button onClick={resumeGame}>Resume</button>
+                )}
+                {isPlaying && !isPaused && (
+                  <button onClick={pauseGame}>Pause</button>
+                )}
+                {isPlaying && !isPaused && (
+                  <button onClick={startGame}>New Game</button>
+                )}
+                <button onClick={toggleTheme}>Toggle Theme</button>
+              </div>
             </div>
           </div>
-        </div>
+        )
       )}
       <ToastContainer />
     </div>
