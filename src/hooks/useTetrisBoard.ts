@@ -88,12 +88,13 @@ function rotateBlock(shape: BlockShape): BlockShape {
 }
 
 type Action = {
-  type: "start" | "drop" | "commit" | "move";
+  type: "start" | "drop" | "commit" | "move" | "swap";
   newBoard?: BoardShape;
   newBlock?: Block;
   isPressingLeft?: boolean;
   isPressingRight?: boolean;
   isRotating?: boolean;
+  block?: Block;
 };
 
 function boardReducer(state: BoardState, action: Action): BoardState {
@@ -101,7 +102,7 @@ function boardReducer(state: BoardState, action: Action): BoardState {
 
   switch (action.type) {
     case "start": {
-      const firstBlock = getRandomBlock(); // Here's the adjustment. Notice the brackets {} wrapping the case.
+      const firstBlock = getRandomBlock();
       return {
         board: getEmptyBoard(),
         droppingRow: 0,
@@ -142,6 +143,14 @@ function boardReducer(state: BoardState, action: Action): BoardState {
         newState.droppingShape = rotatedShape;
       }
       break;
+    }
+    case "swap": {
+      const newDroppingBlock = action.block ?? getRandomBlock();
+      return {
+        ...state,
+        droppingBlock: newDroppingBlock,
+        droppingShape: SHAPES[newDroppingBlock].shape,
+      };
     }
     default: {
       const unhandledType: never = action.type;

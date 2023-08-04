@@ -41,11 +41,23 @@ export function useTetris() {
   const [gameOver, setGameOver] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isDropping, setIsDropping] = useState(true);
+  const [heldBlock, setHeldBlock] = useState<Block | null>(null);
 
   const [
     { board, droppingRow, droppingColumn, droppingBlock, droppingShape },
     dispatchBoardState,
   ] = useTetrisBoard();
+
+  const swapWithHold = useCallback(() => {
+    if (!isPlaying) return;
+
+    const newHeldBlock = droppingBlock;
+    dispatchBoardState({
+      type: "swap",
+      block: heldBlock === null ? undefined : heldBlock,
+    });
+    setHeldBlock(newHeldBlock);
+  }, [dispatchBoardState, isPlaying, droppingBlock, heldBlock]);
 
   const startGame = useCallback(() => {
     const startingBlocks = generateNextBlocks(6);
@@ -231,13 +243,12 @@ export function useTetris() {
         isPressingRight,
       });
       moveIntervalID = window.setInterval(() => {
-        // Use window.setInterval to ensure the correct return type
         dispatchBoardState({
           type: "move",
           isPressingLeft,
           isPressingRight,
         });
-      }, 300) as unknown as number; // Cast the return value to number
+      }, 300) as unknown as number;
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -270,6 +281,11 @@ export function useTetris() {
         hardDrop();
         return;
       }
+
+      if (event.key === "c") {
+        swapWithHold();
+        return;
+      }
     };
 
     const handleKeyUp = (event: KeyboardEvent) => {
@@ -296,7 +312,7 @@ export function useTetris() {
       clearInterval(moveIntervalID);
       setTickSpeed(TickSpeed.Normal);
     };
-  }, [dispatchBoardState, isPlaying, hardDrop]);
+  }, [dispatchBoardState, isPlaying, hardDrop, swapWithHold]);
 
   const renderedBoard = structuredClone(board) as BoardShape;
   if (isPlaying) {
@@ -335,6 +351,8 @@ export function useTetris() {
     pauseGame,
     resumeGame,
     isPaused,
+    heldBlock,
+    swapWithHold,
   };
 }
 

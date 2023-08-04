@@ -1,10 +1,12 @@
 import { Block, SHAPES } from "../types";
 
 type Props = {
-  block: Block;
+  block: Block | null; // Allow for null val when no piece is held
 };
 
 export default function HeldPiece({ block }: Props) {
+  if (block === null) return <div className="held-piece">No held piece</div>;
+
   const shape = SHAPES[block].shape;
 
   return (
