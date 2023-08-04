@@ -41,10 +41,8 @@ function App() {
       </div>
       {isPlaying && (
         <div className="game-container">
-          <div className="held">
-            Hold <HeldPiece block={heldBlock} />
-          </div>
           <div className="next">
+            Hold <HeldPiece block={heldBlock} />
             Next <UpcomingBlocks upcomingBlocks={upcomingBlocks} />{" "}
           </div>
           <Board
