@@ -5,6 +5,8 @@ import { useTetris } from "./hooks/useTetris";
 import Timer from "./components/Timer";
 import ShinyStars from "./components/ShinyStars";
 import HeldPiece from "./components/HeldPiece";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
 
 function App() {
@@ -71,6 +73,7 @@ function App() {
           </div>
         </div>
       )}
+      <ToastContainer />
     </div>
   );
 }

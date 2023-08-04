@@ -15,6 +15,8 @@ import {
   getEmptyBoard,
   getRandomBlock,
 } from "./useTetrisBoard";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 enum TickSpeed {
   Normal = 800,
@@ -42,6 +44,7 @@ export function useTetris() {
   const [isPaused, setIsPaused] = useState(false);
   const [isDropping, setIsDropping] = useState(true);
   const [heldBlock, setHeldBlock] = useState<Block | null>(null);
+  const [level, setLevel] = useState(1);
 
   const [
     { board, droppingRow, droppingColumn, droppingBlock, droppingShape },
@@ -67,6 +70,7 @@ export function useTetris() {
     setIsPlaying(true);
     setTickSpeed(TickSpeed.Normal);
     setGameOver(false);
+    setLevel;
     dispatchBoardState({ type: "start" });
   }, [dispatchBoardState]);
 
@@ -93,6 +97,25 @@ export function useTetris() {
     setTickSpeed(TickSpeed.Normal);
     setIsDropping(true);
   }, []);
+
+  const calculateScore = useCallback(
+    (linesCleared: number): number => {
+      if (linesCleared === 0) {
+        return 0;
+      }
+      // BPS points for 1, 2, 3, and 4 lines cleared
+      const basePoints = [40, 100, 300, 1200];
+      // Calculate the points for the given number of lines cleared and level
+      const points = basePoints[linesCleared - 1] * (level + 1);
+
+      return points;
+    },
+    [level]
+  );
+
+  const notifyScore = (points: number) => {
+    toast.success(`Scored ${points} points!`);
+  };
 
   const commitPosition = useCallback(() => {
     if (!hasCollisions(board, droppingShape, droppingRow + 1, droppingColumn)) {
@@ -130,7 +153,16 @@ export function useTetris() {
       setTickSpeed(TickSpeed.Normal);
     }
     setUpcomingBlocks(newUpcomingBlocks);
-    setScore((prevScore) => prevScore + getPoints(numCleared));
+
+    const points = calculateScore(numCleared);
+
+    if (points > 0) {
+      notifyScore(points);
+    }
+
+    // Update the score here by adding the points earned from clearing lines
+    setScore((prevScore) => prevScore + points);
+
     dispatchBoardState({
       type: "commit",
       newBoard: [...getEmptyBoard(BOARD_HEIGHT - newBoard.length), ...newBoard],
@@ -145,6 +177,7 @@ export function useTetris() {
     droppingRow,
     droppingShape,
     upcomingBlocks,
+    calculateScore,
   ]);
 
   const hardDrop = useCallback(() => {
@@ -181,7 +214,16 @@ export function useTetris() {
       setTickSpeed(TickSpeed.Normal);
     }
     setUpcomingBlocks(newUpcomingBlocks);
-    setScore((prevScore) => prevScore + getPoints(numCleared));
+
+    const points = calculateScore(numCleared);
+
+    if (points > 0) {
+      notifyScore(points);
+    }
+
+    // Update the score here by adding the points earned from clearing lines
+    setScore((prevScore) => prevScore + points);
+
     dispatchBoardState({
       type: "commit",
       newBoard: [...getEmptyBoard(BOARD_HEIGHT - newBoard.length), ...newBoard],
@@ -196,6 +238,7 @@ export function useTetris() {
     droppingRow,
     droppingShape,
     upcomingBlocks,
+    calculateScore,
   ]);
 
   const gameTick = useCallback(() => {
@@ -354,23 +397,6 @@ export function useTetris() {
     heldBlock,
     swapWithHold,
   };
-}
-
-function getPoints(numCleared: number): number {
-  switch (numCleared) {
-    case 0:
-      return 0;
-    case 1:
-      return 100;
-    case 2:
-      return 300;
-    case 3:
-      return 500;
-    case 4:
-      return 800;
-    default:
-      throw new Error("Unexpected number of rows cleared");
-  }
 }
 
 function addShapeToBoard(
