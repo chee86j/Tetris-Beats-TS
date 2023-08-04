@@ -5,7 +5,7 @@ type Props = {
 };
 
 export default function HeldPiece({ block }: Props) {
-  if (block === null) return <div className="held-piece">No held piece</div>;
+  if (block === null) return <div className="held-piece"></div>;
 
   const shape = SHAPES[block].shape;
 

@@ -185,6 +185,14 @@ button {
   display: flex;
 }
 
+.held-piece {
+  margin-top: 0;
+  font-size: xx-large;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 8px;
+  margin-right: 0;
+}
+
 .next {
   margin-top: 0;
   font-size: xx-large;
@@ -206,6 +214,7 @@ button {
   font-family: Arial, Helvetica, sans-serif;
   margin-top: 8px;
 }
+
 
 .cell {
   width: var(--tile-size);
