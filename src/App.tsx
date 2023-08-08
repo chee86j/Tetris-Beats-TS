@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GameOver from "./components/GameOver";
 import Controls from "./components/Controls";
+import { Sparkles, Pause, Play } from "lucide-react";
 import "./index.css";
 
 function App() {
@@ -85,14 +86,22 @@ function App() {
             </div>
 
             <div className="game-info">
-              <div className="score">Score: {score}</div>
+              <div className="score">
+                <Sparkles />
+                Score: {score}
+                <Sparkles />
+              </div>
               <div className="buttons">
                 <Timer isPaused={isPaused} />
                 {isPlaying && isPaused && (
-                  <button onClick={resumeGame}>Resume</button>
+                  <button onClick={resumeGame}>
+                    <Play />
+                  </button>
                 )}
                 {isPlaying && !isPaused && (
-                  <button onClick={pauseGame}>Pause</button>
+                  <button onClick={pauseGame}>
+                    <Pause />
+                  </button>
                 )}
                 {isPlaying && !isPaused && (
                   <button onClick={startGame}>New Game</button>

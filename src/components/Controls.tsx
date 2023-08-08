@@ -1,4 +1,11 @@
 import React from "react";
+import {
+  ArrowBigLeft,
+  ArrowBigDownDash,
+  ArrowBigRight,
+  ArrowBigUp,
+  RefreshCw,
+} from "lucide-react";
 
 interface ControlsProps {
   moveLeft: () => void;
@@ -17,11 +24,21 @@ const Controls: React.FC<ControlsProps> = ({
 }) => {
   return (
     <div className="controls-container">
-      <button onClick={moveLeft}>Left</button>
-      <button onClick={rotate}>Rotate</button>
-      <button onClick={hold}>Hold</button>
-      <button onClick={drop}>Drop</button>
-      <button onClick={moveRight}>Right</button>
+      <button onClick={moveLeft}>
+        <ArrowBigLeft />
+      </button>
+      <button onClick={rotate}>
+        <ArrowBigUp />
+      </button>
+      <button className="holdButton" onClick={hold}>
+        <RefreshCw />
+      </button>
+      <button onClick={drop}>
+        <ArrowBigDownDash />
+      </button>
+      <button onClick={moveRight}>
+        <ArrowBigRight />
+      </button>
     </div>
   );
 };

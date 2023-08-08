@@ -192,11 +192,22 @@ button {
   align-items: center;
 }
 
+.holdButton {
+  font-size: 1.5rem;
+  color: black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .buttons {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.0rem;
+  font-size: 2 rem;
+  color: black;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .score {
