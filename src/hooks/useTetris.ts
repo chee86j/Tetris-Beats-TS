@@ -25,6 +25,8 @@ enum TickSpeed {
   Instantly = 0.0001,
 }
 
+const LINES_PER_LEVEL = 10;
+
 function generateNextBlocks(numBlocks: number): Block[] {
   const blocks: Block[] = [];
   for (let i = 0; i < numBlocks; i++) {
@@ -44,7 +46,8 @@ export function useTetris() {
   const [isPaused, setIsPaused] = useState(false);
   const [isDropping, setIsDropping] = useState(true);
   const [heldBlock, setHeldBlock] = useState<Block | null>(null);
-  const [level, setLevel] = useState(1);
+  const [level, setLevel] = useState(0);
+  const [linesCleared, setLinesCleared] = useState(0);
 
   const [
     { board, droppingRow, droppingColumn, droppingBlock, droppingShape },
@@ -117,6 +120,19 @@ export function useTetris() {
   const notifyScore = (points: number, linesCleared: number) => {
     toast.success(`Cleared ${linesCleared} lines! Scored ${points} points!`);
   };
+
+  const checkForCompletedLines = useCallback(() => {
+    if (linesCleared > 0) {
+      const { points } = calculateScore(linesCleared);
+      setScore((prevScore) => prevScore + points * (level + 1));
+      setLinesCleared((prevLines) => prevLines + linesCleared);
+
+      if (linesCleared >= LINES_PER_LEVEL) {
+        setLevel((prevLevel) => prevLevel + 1);
+      }
+    }
+    return linesCleared;
+  }, [calculateScore, level, linesCleared]);
 
   const commitPosition = useCallback(() => {
     if (!hasCollisions(board, droppingShape, droppingRow + 1, droppingColumn)) {
@@ -399,6 +415,9 @@ export function useTetris() {
     swapWithHold,
     dispatchBoardState,
     hardDrop,
+    level,
+    linesCleared,
+    checkForCompletedLines,
   };
 }
 

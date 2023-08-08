@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Board from "./components/Board";
 import UpcomingBlocks from "./components/UpcomingBlocks";
 import { useTetris } from "./hooks/useTetris";
@@ -28,7 +28,18 @@ function App() {
     swapWithHold,
     dispatchBoardState,
     hardDrop,
+    level,
+    checkForCompletedLines,
   } = useTetris();
+
+  const [linesCleared, setLinesCleared] = useState(0);
+
+  useEffect(() => {
+    const clearedLines = checkForCompletedLines();
+    if (clearedLines > 0) {
+      setLinesCleared((prevLines) => prevLines + clearedLines);
+    }
+  }, [board, checkForCompletedLines]);
 
   const toggleTheme = () => {
     setIsTetrisEffectTheme((prevTheme) => !prevTheme);
@@ -87,10 +98,11 @@ function App() {
 
             <div className="game-info">
               <div className="score">
-                <Sparkles />
+                <div>Level: {level} </div>
                 Score: {score}
-                <Sparkles />
+                <div>Lines: {linesCleared} </div>
               </div>
+
               <div className="buttons">
                 <Timer isPaused={isPaused} />
                 {isPlaying && isPaused && (
