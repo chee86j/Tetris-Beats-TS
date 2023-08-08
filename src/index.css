@@ -115,6 +115,14 @@ button {
   align-self: flex-start;
 }
 
+.controls-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+
 .game-info {
   display: flex;
   flex-direction: column;

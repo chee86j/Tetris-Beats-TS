@@ -8,6 +8,7 @@ import HeldPiece from "./components/HeldPiece";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GameOver from "./components/GameOver";
+import Controls from "./components/Controls";
 import "./index.css";
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
     gameOver,
     isPaused,
     heldBlock,
+    swapWithHold,
+    dispatchBoardState,
+    hardDrop,
   } = useTetris();
 
   const toggleTheme = () => {
@@ -56,14 +60,30 @@ function App() {
               </div>
               Next <UpcomingBlocks upcomingBlocks={upcomingBlocks} />{" "}
             </div>
-            <Board
-              currentBoard={board}
-              isDropping={false}
-              moveShapeDown={function (): void {
-                throw new Error("Function not implemented.");
-              }}
-              dropInterval={0}
-            />
+            <div>
+              <Board
+                currentBoard={board}
+                isDropping={false}
+                moveShapeDown={function (): void {
+                  throw new Error("Function not implemented.");
+                }}
+                dropInterval={0}
+              />
+              <Controls
+                moveLeft={() =>
+                  dispatchBoardState({ type: "move", isPressingLeft: true })
+                }
+                moveRight={() =>
+                  dispatchBoardState({ type: "move", isPressingRight: true })
+                }
+                rotate={() =>
+                  dispatchBoardState({ type: "move", isRotating: true })
+                }
+                drop={hardDrop}
+                hold={swapWithHold}
+              />
+            </div>
+
             <div className="game-info">
               <div className="score">Score: {score}</div>
               <div className="buttons">

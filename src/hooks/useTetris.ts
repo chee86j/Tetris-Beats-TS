@@ -397,6 +397,8 @@ export function useTetris() {
     isPaused,
     heldBlock,
     swapWithHold,
+    dispatchBoardState,
+    hardDrop,
   };
 }
 
