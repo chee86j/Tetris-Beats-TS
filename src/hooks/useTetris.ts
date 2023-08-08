@@ -25,8 +25,6 @@ enum TickSpeed {
   Instantly = 0.0001,
 }
 
-const LINES_PER_LEVEL = 10;
-
 function generateNextBlocks(numBlocks: number): Block[] {
   const blocks: Block[] = [];
   for (let i = 0; i < numBlocks; i++) {
@@ -48,6 +46,8 @@ export function useTetris() {
   const [heldBlock, setHeldBlock] = useState<Block | null>(null);
   const [level, setLevel] = useState(0);
   const [linesCleared, setLinesCleared] = useState(0);
+  const [totalLinesCleared, setTotalLinesCleared] = useState(0);
+  const [currentLevel, setCurrentLevel] = useState(0);
 
   const [
     { board, droppingRow, droppingColumn, droppingBlock, droppingShape },
@@ -73,7 +73,7 @@ export function useTetris() {
     setIsPlaying(true);
     setTickSpeed(TickSpeed.Normal);
     setGameOver(false);
-    setLevel(1);
+    setLevel(0);
     dispatchBoardState({ type: "start" });
     setHeldBlock(null);
   }, [dispatchBoardState]);
@@ -121,19 +121,6 @@ export function useTetris() {
     toast.success(`Cleared ${linesCleared} lines! Scored ${points} points!`);
   };
 
-  const checkForCompletedLines = useCallback(() => {
-    if (linesCleared > 0) {
-      const { points } = calculateScore(linesCleared);
-      setScore((prevScore) => prevScore + points * (level + 1));
-      setLinesCleared((prevLines) => prevLines + linesCleared);
-
-      if (linesCleared >= LINES_PER_LEVEL) {
-        setLevel((prevLevel) => prevLevel + 1);
-      }
-    }
-    return linesCleared;
-  }, [calculateScore, level, linesCleared]);
-
   const commitPosition = useCallback(() => {
     if (!hasCollisions(board, droppingShape, droppingRow + 1, droppingColumn)) {
       setIsCommitting(false);
@@ -179,6 +166,8 @@ export function useTetris() {
 
     // Update the score here by adding the points earned from clearing lines
     setScore((prevScore) => prevScore + points);
+    setLinesCleared((prevLines) => prevLines + numCleared);
+    setTotalLinesCleared((prevTotal) => prevTotal + numCleared);
 
     dispatchBoardState({
       type: "commit",
@@ -240,6 +229,8 @@ export function useTetris() {
 
     // Update the score here by adding the points earned from clearing lines
     setScore((prevScore) => prevScore + points);
+    setLinesCleared((prevLines) => prevLines + numCleared);
+    setTotalLinesCleared((prevTotal) => prevTotal + numCleared);
 
     dispatchBoardState({
       type: "commit",
@@ -400,6 +391,10 @@ export function useTetris() {
     );
   }
 
+  useEffect(() => {
+    setCurrentLevel(Math.floor(totalLinesCleared / 10));
+  }, [totalLinesCleared]);
+
   return {
     board: renderedBoard,
     startGame,
@@ -415,9 +410,9 @@ export function useTetris() {
     swapWithHold,
     dispatchBoardState,
     hardDrop,
-    level,
+    level: currentLevel,
     linesCleared,
-    checkForCompletedLines,
+    totalLinesCleared,
   };
 }
 

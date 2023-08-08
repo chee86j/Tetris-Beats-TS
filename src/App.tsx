@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Board from "./components/Board";
 import UpcomingBlocks from "./components/UpcomingBlocks";
 import { useTetris } from "./hooks/useTetris";
@@ -9,7 +9,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GameOver from "./components/GameOver";
 import Controls from "./components/Controls";
-import { Sparkles, Pause, Play } from "lucide-react";
+import { Pause, Play } from "lucide-react";
 import "./index.css";
 
 function App() {
@@ -28,18 +28,9 @@ function App() {
     swapWithHold,
     dispatchBoardState,
     hardDrop,
+    totalLinesCleared,
     level,
-    checkForCompletedLines,
   } = useTetris();
-
-  const [linesCleared, setLinesCleared] = useState(0);
-
-  useEffect(() => {
-    const clearedLines = checkForCompletedLines();
-    if (clearedLines > 0) {
-      setLinesCleared((prevLines) => prevLines + clearedLines);
-    }
-  }, [board, checkForCompletedLines]);
 
   const toggleTheme = () => {
     setIsTetrisEffectTheme((prevTheme) => !prevTheme);
@@ -100,7 +91,7 @@ function App() {
               <div className="score">
                 <div>Level: {level} </div>
                 Score: {score}
-                <div>Lines: {linesCleared} </div>
+                <div>Lines: {totalLinesCleared} </div>
               </div>
 
               <div className="buttons">
