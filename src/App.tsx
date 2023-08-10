@@ -41,11 +41,11 @@ function App() {
       <ShinyStars children={undefined} />
       <div className="title">
         <h1>
-          <span className="t">T</span>
-          <span className="e">E</span>
-          <span className="t2">T</span>
-          <span className="r">R</span>
-          <span className="i">I</span>
+          <span className="t">T </span>
+          <span className="e">E </span>
+          <span className="t2">T </span>
+          <span className="r">R </span>
+          <span className="i">I </span>
           <span className="s">S</span>
         </h1>
         {!isPlaying && !gameOver && (
@@ -92,18 +92,18 @@ function App() {
                 <div>Level: {level} </div>
                 Score: {score}
                 <div>Lines: {totalLinesCleared} </div>
+                <Timer isPaused={isPaused} />
               </div>
 
               <div className="buttons">
-                <Timer isPaused={isPaused} />
                 {isPlaying && isPaused && (
                   <button onClick={resumeGame}>
-                    <Play />
+                    <Play size={32} strokeWidth={2.25} />
                   </button>
                 )}
                 {isPlaying && !isPaused && (
                   <button onClick={pauseGame}>
-                    <Pause />
+                    <Pause size={32} strokeWidth={2.25} />
                   </button>
                 )}
                 {isPlaying && !isPaused && (

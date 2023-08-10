@@ -25,19 +25,19 @@ const Controls: React.FC<ControlsProps> = ({
   return (
     <div className="controls-container">
       <button onClick={moveLeft}>
-        <ArrowBigLeft />
+        <ArrowBigLeft size={32} strokeWidth={2.25} />
       </button>
       <button onClick={rotate}>
-        <ArrowBigUp />
+        <ArrowBigUp size={32} strokeWidth={2.25} />
       </button>
       <button className="holdButton" onClick={hold}>
-        <RefreshCw />
+        <RefreshCw size={32} strokeWidth={2.25} />
       </button>
       <button onClick={drop}>
-        <ArrowBigDownDash />
+        <ArrowBigDownDash size={32} strokeWidth={2.25} />
       </button>
       <button onClick={moveRight}>
-        <ArrowBigRight />
+        <ArrowBigRight size={32} strokeWidth={2.25} />
       </button>
     </div>
   );
