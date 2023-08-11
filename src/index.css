@@ -4,7 +4,7 @@ body {
   padding: 0;
   height: 100%;
   overflow: hidden;
-}
+} 
 
 :root {
   --bg-color: rgba(150, 150, 150, 1);
@@ -12,8 +12,8 @@ body {
   --border-top-color: rgba(255, 255, 255, 0.33);
   --border-right-color: rgba(0, 0, 0, 0.15);
   --border-bottom-color: rgba(0, 0, 0, 0.5);
-  --tile-size: 20px;
-  --border-width: 5px;
+  --tile-size: 15px;
+  --border-width: 3px;
   --color-0: rgb(200, 200, 200); /* Empty */
   --color-1: rgb(80, 227, 230); /* I */
   --color-2: rgb(36, 95, 223); /* J */
@@ -26,7 +26,7 @@ body {
   --col-center: calc(var(--tile-size) * 10);
   --grid-height: calc(var(--tile-size) * 18);
   --cell-glow-color: rgba(255, 255, 255, 0.5);
-  --pulse-duration: 1s:
+  --pulse-duration: var(--color-1)s:
 }
 
 .instructions {
@@ -45,7 +45,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   min-height: 100vh;
-  margin: 1rem;
+  margin: 0;
   overflow: hidden;
 }
 
@@ -57,8 +57,8 @@ body {
   color: rgba(255, 255, 255, 255);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  font-size: 2.5rem;
-  margin-top: 5rem;
+  font-size: 2rem;
+  margin-top: 4rem;
 }
 
 .earnedScore {
@@ -70,6 +70,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 2.7rem;
+  margin-top: 4rem;
 }
 
 h1 {
@@ -83,15 +84,17 @@ body {
   background: url("https://wallpaperaccess.com/full/17510.jpg")
     no-repeat center center fixed;
   background-size: cover;
-  margin-bottom: 7rem;
+  max-width: 100%;
+  display: block;
 }
 
 button {
-  padding: 12px;
+  padding: 2px;
   border-radius: 5px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 10px;
+  margin-top: 1rem;
 }
 
 .game-container {
@@ -116,24 +119,50 @@ button {
   grid-template-columns: repeat(var(--cols), var(--tile-size));
   grid-gap: 0;
   align-self: flex-start;
+  align-items: center;
 }
 
 .controls-container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 10px;
+  justify-content: space-evenly;
+  margin-top: 8px;
+}
+
+.next {
+  box-sizing: border-box;
+  width: 20vw;
+  height: 50vh;
+  margin-top: 0;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;;
+  font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-interface {
+  box-sizing: border-box;
+  width: 50vw;
+  height: 50vh;
+  margin-top: 5rem;
 }
 
 .game-info {
+  box-sizing: border-box;
+  width: 15vw;
+  height: 50vh;
   display: flex;
   flex-direction: column;
-  font-weight: bold;
-  font-size: rem;
+  align-items: center;
+  font-weight: semi-bold;
   gap: 0;
-  margin-left: 2rem;
   margin-top: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .start-button button {
@@ -156,13 +185,12 @@ button {
 
 .title {
   text-align: center;
- 
+  margin-top: 3rem;
 }
 
 .title h1 {
-  font-size: 6rem;
-  margin-bottom: 2px;
-  justify-content: space-between;
+  font-size: 4.5rem;
+  margin-bottom: 0;
 }
 
 .title .t {
@@ -197,7 +225,7 @@ button {
 }
 
 .holdButton {
-  font-size: 1.5rem;
+  font-size: large;
   color: black;
   border-radius: 5px;
   cursor: pointer;
@@ -207,8 +235,8 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.0rem;
-  font-size: 2 rem;
+  gap: 1px;
+  font-size: 2px;
   color: black;
   border-radius: 5px;
   cursor: pointer;
@@ -217,7 +245,7 @@ button {
 .score {
   color: rgb(252, 252, 252);
   margin-bottom: 0;
-  font-size: 2rem;
+  font-size: large;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
@@ -230,11 +258,10 @@ button {
   align-items: center;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  font-size: 2rem;
-  margin-left: 5px;
+  font-size: large;
   color: rgb(252, 252, 252);
-  margin-bottom: 2rem;
-  margin-top: 2rem;
+  margin-bottom: 2px;
+  margin-top: 2px;
 }
 
 .row {
@@ -243,32 +270,25 @@ button {
 
 .held-piece {
   margin-top: 0;
-  font-size: xx-large;
   font-family: Arial, Helvetica, sans-serif;
-  margin-bottom : 8px;
-  margin-right: 0;
-}
-
-.next {
-  margin-top: 0;
-  font-size: xx-large;
-  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom : 1rem;
+  transform: scale(.90);
+  display: flexbox;
 }
 
 .upcoming {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 2fr;
   grid-template-columns: repeat(1);
   grid-gap: 10px;
   flex-direction: column-reverse;
   align-items: center;
-  transform: scale(1.0);
-  margin-right: 2rem;  
+  transform: scale(.70);
   color: rgb(252, 252, 252);
   margin-bottom: 0;
-  font-size: xx-large;
+  font-size:large;
   font-family: Arial, Helvetica, sans-serif;
-  margin-top: 8px;
+  margin-top: 0;
 }
 
 

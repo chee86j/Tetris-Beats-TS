@@ -11,7 +11,7 @@ const GameOver: React.FC<GameOverProps> = ({ score, startGame }) => {
       <h1>
         Game Over
         <p className="earnedScore">Your Score: {score}</p>
-        <button onClick={startGame}>Start a New Game</button>
+        <button onClick={startGame}>Start New Game</button>
       </h1>
     </div>
   );
