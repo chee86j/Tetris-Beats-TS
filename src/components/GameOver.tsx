@@ -8,11 +8,9 @@ interface GameOverProps {
 const GameOver: React.FC<GameOverProps> = ({ score, startGame }) => {
   return (
     <div className="game-over">
-      <h1>
-        Game Over
-        <p className="earnedScore">Your Score: {score}</p>
-        <button onClick={startGame}>Start New Game</button>
-      </h1>
+      Game Over
+      <p className="earnedScore">Your Score: {score}</p>
+      <button onClick={startGame}>Start New Game</button>
     </div>
   );
 };
