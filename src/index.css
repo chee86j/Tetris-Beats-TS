@@ -87,6 +87,23 @@ body {
   display: block;
 }
 
+.theme1 {
+  background: url("https://wallpaperaccess.com/full/39615.jpg")
+    no-repeat center center fixed;
+  background-size: cover;
+  max-width: 100%;
+  display: block;
+}
+
+.theme2 {
+  background: url("https://wallpaperaccess.com/full/17510.jpg")
+    no-repeat center center fixed;
+  background-size: cover;
+  max-width: 100%;
+  display: block;
+}
+
+
 button {
   padding: 8px;
   border-radius: 5px;

@@ -27,6 +27,9 @@ const Controls: React.FC<ControlsProps> = ({
       <button onClick={moveLeft}>
         <ArrowBigLeft size={24} strokeWidth={2} />
       </button>
+      <button onClick={moveRight}>
+        <ArrowBigRight size={24} strokeWidth={2} />
+      </button>
       <button onClick={rotate}>
         <ArrowBigUp size={24} strokeWidth={2} />
       </button>
@@ -35,9 +38,6 @@ const Controls: React.FC<ControlsProps> = ({
       </button>
       <button onClick={drop}>
         <ArrowBigDownDash size={24} strokeWidth={2} />
-      </button>
-      <button onClick={moveRight}>
-        <ArrowBigRight size={24} strokeWidth={2} />
       </button>
     </div>
   );
