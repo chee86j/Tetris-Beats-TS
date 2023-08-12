@@ -382,12 +382,8 @@ button {
   background-color: #ff4d4d;
 }
 
+/* Responsive Web Design */
 @media (min-width: 768px) {
-  .game-board {
-      width: vw;
-      height: 100vh;
-  }
-
   .controls-container {
     justify-content: space-evenly;
 

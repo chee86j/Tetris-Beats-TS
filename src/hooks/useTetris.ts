@@ -286,7 +286,7 @@ export function useTetris() {
   ]);
 
   useInterval(() => {
-    if (!isPlaying) {
+    if (!isPlaying || isPaused) {
       return;
     }
     gameTick();
