@@ -29,6 +29,7 @@ body {
   --pulse-duration: var(--color-1)s:
 }
 
+
 .instructions {
   display: flex;
   flex-direction: row;
@@ -105,7 +106,7 @@ body {
 
 
 button {
-  padding: 8px;
+  padding: 6px;
   border-radius: 5px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -118,7 +119,7 @@ button {
   grid-template-columns: 1fr 1fr 1fr;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content:first baseline;
   color: rgba(255, 255, 255, 255);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -141,10 +142,28 @@ button {
 
 .controls-container {
   display: flex;
+  flex-direction: center;
+  align-items: center;
+  border: white;
+  border-style: double;
+}
+
+.directional-controls {
+  display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 3px;
+}
+
+.ab-controls {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.lock-controls {
+  font-size: small;
+  margin-left: 20px;
 }
 
 .next {
@@ -171,6 +190,7 @@ button {
   font-weight: semi-bold;
   gap: 0;
   margin-top: 0;
+  margin-left: -38px;
 }
 
 .start-button button {
