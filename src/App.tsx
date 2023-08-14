@@ -8,7 +8,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GameOver from "./components/GameOver";
 import Controls from "./components/Controls";
-import GameInfo from "./components/GameInfo"; // Import the GameInfo component
+import GameInfo from "./components/GameInfo";
 import "./index.css";
 
 function App() {

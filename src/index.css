@@ -61,16 +61,25 @@ body {
   margin-top: 0rem;
 }
 
+.pastScores {
+  font-size: x-large;
+  display: contents;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0;
+  gap: 0;
+}
+
 .earnedScore {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   color: rgba(255, 255, 255, 255);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  font-size: 2.5rem;
-  margin-top: 2rem;
+  font-size: 2.0rem;
+  margin-top: 1rem;
 }
 
 h1 {
