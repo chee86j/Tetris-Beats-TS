@@ -434,6 +434,55 @@ button {
   background-color: #ff4d4d;
 }
 
+@media (min-width: 321px) and (max-width: 480px) {
+  .controls-container {
+    justify-content: space-evenly;
+
+  }
+
+  .game-over {
+    transform: scale(1.1);
+  }
+
+  .upcoming {
+    gap: 1rem;
+  }
+
+  .next {
+      margin-right: 3px;
+      margin-top: -2rem;
+  }
+
+  .title {
+    transform: scale(.9 );
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  :root {
+    --tile-size: 14px;
+    --border-width: 4px;
+  }
+
+  .game-info {
+    margin-left: 3px;
+    margin-top: -2rem;
+  }
+
+  button {
+    padding: 4px;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 3rem;
+    margin-left: -3px;
+    
+  }
+
+}
+
+
 /* Responsive Web Design */
 @media (min-width: 768px) {
   .controls-container {
@@ -470,8 +519,59 @@ button {
     transform: scale(1.7);
   }
 
-  .controls-container {
-    transform: scale(1.3);
+  button {
+    padding: 12px;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 11px;
+    margin-top: 1rem;
   }
+
 }
 
+/* Responsive Web Design */
+@media (min-width: 912px) {
+  .controls-container {
+    justify-content: space-around;
+  }
+
+  .game-over {
+    transform: scale(1.75);
+  }
+
+  .upcoming {
+    gap: 1rem;
+  }
+
+  .next {
+    font-size: 2rem;
+  }
+
+  .title {
+    transform: scale(1.5);
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
+
+  :root {
+    --tile-size: 30px;
+  --border-width: 10px;
+  }
+
+  .score {
+    font-size: 1.5rem;
+  }
+
+  .timer {
+    font-size: 1.5rem;
+  }
+
+  button {
+    padding: 8px;
+    font-size: 10px;
+    margin-top: 2rem;
+    transform: scale(1.5);
+  }
+
+}

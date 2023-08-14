@@ -55,7 +55,7 @@ const Controls: React.FC<ControlsProps> = ({
           {/* Lock and Unlock Controls */}
           <div className="lock-controls">
             <button onClick={() => setIsDraggable(!isDraggable)}>
-              {isDraggable ? <Unlock size={18} /> : <Lock size={16} />}
+              {isDraggable ? <Unlock size={18} /> : <Lock size={18} />}
             </button>
           </div>
         </div>

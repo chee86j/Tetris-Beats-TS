@@ -45,7 +45,7 @@ const GameInfo: React.FC<GameInfoProps> = ({
         )}
         {isPlaying && !isPaused && (
           <button onClick={pauseGame}>
-            <Pause size={24} strokeWidth={2} />
+            <Pause size={18} strokeWidth={2} />
           </button>
         )}
         {isPlaying && !isPaused && (
