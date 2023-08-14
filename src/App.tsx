@@ -2,14 +2,13 @@ import { useState } from "react";
 import Board from "./components/Board";
 import UpcomingBlocks from "./components/UpcomingBlocks";
 import { useTetris } from "./hooks/useTetris";
-import Timer from "./components/Timer";
 import ShinyStars from "./components/ShinyStars";
 import HeldPiece from "./components/HeldPiece";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GameOver from "./components/GameOver";
 import Controls from "./components/Controls";
-import { Pause, Play } from "lucide-react";
+import GameInfo from "./components/GameInfo"; // Import the GameInfo component
 import "./index.css";
 
 function App() {
@@ -87,31 +86,17 @@ function App() {
               />
             </div>
 
-            <div className="game-info">
-              <div className="score">
-                <div>Level: {level} </div>
-                Score: {score}
-                <div>Lines: {totalLinesCleared} </div>
-                <Timer isPaused={isPaused} />
-              </div>
-
-              <div className="buttons">
-                {isPlaying && isPaused && (
-                  <button onClick={resumeGame}>
-                    <Play size={24} strokeWidth={2} />
-                  </button>
-                )}
-                {isPlaying && !isPaused && (
-                  <button onClick={pauseGame}>
-                    <Pause size={24} strokeWidth={2} />
-                  </button>
-                )}
-                {isPlaying && !isPaused && (
-                  <button onClick={startGame}>New Game</button>
-                )}
-                <button onClick={toggleTheme}>Toggle Theme</button>
-              </div>
-            </div>
+            <GameInfo
+              level={level}
+              score={score}
+              totalLinesCleared={totalLinesCleared}
+              isPaused={isPaused}
+              isPlaying={isPlaying}
+              resumeGame={resumeGame}
+              pauseGame={pauseGame}
+              startGame={startGame}
+              toggleTheme={toggleTheme}
+            />
           </div>
         )
       )}

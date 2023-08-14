@@ -45,7 +45,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 100vh;
+  min-height: 75vh;
   margin: 0;
   overflow: hidden;
 }
@@ -193,6 +193,10 @@ button {
   margin-left: -38px;
 }
 
+.value {
+  font-weight: normal;
+}
+
 .start-button button {
   font-size: xx-large;
   background-color: #4caf50;
@@ -213,7 +217,11 @@ button {
 
 .title {
   text-align: center;
-  margin-top: 3rem;
+  position: relative;
+}
+
+.game-container, .game-over {
+  margin-top: 0px;
 }
 
 .title h1 {
@@ -278,7 +286,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;  
+  gap: 5px;  
 }
 .timer {
   display: flex;
