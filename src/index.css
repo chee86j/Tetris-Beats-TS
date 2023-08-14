@@ -144,8 +144,6 @@ button {
   display: flex;
   flex-direction: center;
   align-items: center;
-  border: white;
-  border-style: double;
 }
 
 .directional-controls {
@@ -318,7 +316,7 @@ button {
   grid-gap: 10px;
   flex-direction: column-reverse;
   align-items: center;
-  transform: scale(.70);
+  transform: scale(.80);
   color: rgb(252, 252, 252);
   margin-bottom: 0;
   font-size:large;
