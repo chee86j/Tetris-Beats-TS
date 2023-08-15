@@ -55,6 +55,7 @@ export function useTetris() {
   const [linesCleared, setLinesCleared] = useState(0);
   const [totalLinesCleared, setTotalLinesCleared] = useState(0);
   const [currentLevel, setCurrentLevel] = useState(0);
+  const [isPressingDown, setIsPressingDown] = useState(false);
 
   const [
     { board, droppingRow, droppingColumn, droppingBlock, droppingShape },
@@ -85,6 +86,14 @@ export function useTetris() {
     setHeldBlock(null);
   }, [dispatchBoardState]);
 
+  const pressDown = useCallback(() => {
+    setIsPressingDown(true);
+  }, []);
+
+  const releaseDown = useCallback(() => {
+    setIsPressingDown(false);
+  }, []);
+
   useEffect(() => {
     const newCurrentLevel = Math.floor(totalLinesCleared / 10);
     setCurrentLevel(newCurrentLevel);
@@ -93,17 +102,20 @@ export function useTetris() {
     // console.log(`Level: ${newCurrentLevel}, Tick Speed: ${tickSpeed}ms`);
   }, [totalLinesCleared, tickSpeed]);
 
-  const getGhostPosition = (
-    shape: BlockShape,
-    row: number,
-    col: number
-  ): { ghostRow: number; ghostCol: number } => {
-    let ghostRow = row;
-    while (!hasCollisions(board, shape, ghostRow + 1, col)) {
-      ghostRow++;
-    }
-    return { ghostRow, ghostCol: col };
-  };
+  const getGhostPosition = useCallback(
+    (
+      shape: BlockShape,
+      row: number,
+      col: number
+    ): { ghostRow: number; ghostCol: number } => {
+      let ghostRow = row;
+      while (!hasCollisions(board, shape, ghostRow + 1, col)) {
+        ghostRow++;
+      }
+      return { ghostRow, ghostCol: col };
+    },
+    [board]
+  );
 
   const pauseGame = useCallback(() => {
     setIsPaused(true);
@@ -323,6 +335,7 @@ export function useTetris() {
       }
 
       if (event.key === "ArrowDown") {
+        pressDown();
         setTickSpeed(TickSpeed.Fast);
       }
 
@@ -356,6 +369,7 @@ export function useTetris() {
 
     const handleKeyUp = (event: KeyboardEvent) => {
       if (event.key === "ArrowDown" || event.code === "Space") {
+        releaseDown();
         setTickSpeed(TickSpeed.Normal);
       }
 
@@ -378,7 +392,15 @@ export function useTetris() {
       clearInterval(moveIntervalID);
       setTickSpeed(TickSpeed.Normal);
     };
-  }, [dispatchBoardState, isPlaying, hardDrop, swapWithHold]);
+  }, [
+    dispatchBoardState,
+    isPlaying,
+    hardDrop,
+    swapWithHold,
+    pressDown,
+    releaseDown,
+    currentLevel,
+  ]);
 
   const renderedBoard = structuredClone(board) as BoardShape;
   if (isPlaying) {
@@ -410,6 +432,49 @@ export function useTetris() {
     setCurrentLevel(Math.floor(totalLinesCleared / 10));
   }, [totalLinesCleared]);
 
+  useEffect(() => {
+    if (isPlaying) {
+      const { ghostRow, ghostCol } = getGhostPosition(
+        droppingShape,
+        droppingRow,
+        droppingColumn
+      );
+
+      addShapeToBoard(
+        renderedBoard,
+        droppingBlock,
+        droppingShape,
+        droppingRow,
+        droppingColumn
+      );
+
+      addShapeToBoard(
+        renderedBoard,
+        GhostBlock,
+        droppingShape,
+        ghostRow,
+        ghostCol,
+        true
+      );
+
+      if (isPressingDown) {
+        setTickSpeed(TickSpeed.Fast);
+      } else {
+        setTickSpeed(getTickSpeedForLevel(currentLevel));
+      }
+    }
+  }, [
+    isPlaying,
+    renderedBoard,
+    droppingBlock,
+    droppingColumn,
+    droppingRow,
+    droppingShape,
+    isPressingDown,
+    currentLevel,
+    getGhostPosition,
+  ]);
+
   return {
     board: renderedBoard,
     startGame,
@@ -428,6 +493,8 @@ export function useTetris() {
     level: currentLevel,
     linesCleared,
     totalLinesCleared,
+    pressDown,
+    releaseDown,
   };
 }
 

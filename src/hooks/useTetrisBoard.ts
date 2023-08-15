@@ -93,6 +93,7 @@ type Action = {
   newBlock?: Block;
   isPressingLeft?: boolean;
   isPressingRight?: boolean;
+  isPressingDown?: boolean;
   isRotating?: boolean;
   block?: Block;
 };

@@ -75,6 +75,9 @@ function App() {
                 moveLeft={() =>
                   dispatchBoardState({ type: "move", isPressingLeft: true })
                 }
+                moveDown={() =>
+                  dispatchBoardState({ type: "move", isPressingDown: true })
+                }
                 moveRight={() =>
                   dispatchBoardState({ type: "move", isPressingRight: true })
                 }

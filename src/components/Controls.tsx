@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Draggable from "react-draggable";
 import {
   ArrowBigLeft,
+  ArrowBigDown,
   ArrowBigDownDash,
   ArrowBigRight,
   ArrowBigUp,
@@ -13,6 +14,7 @@ import {
 interface ControlsProps {
   moveLeft: () => void;
   moveRight: () => void;
+  moveDown: () => void;
   rotate: () => void;
   drop: () => void;
   hold: () => void;
@@ -20,6 +22,7 @@ interface ControlsProps {
 
 const Controls: React.FC<ControlsProps> = ({
   moveLeft,
+  moveDown,
   moveRight,
   rotate,
   drop,
@@ -35,6 +38,9 @@ const Controls: React.FC<ControlsProps> = ({
           <div className="directional-controls">
             <button onClick={moveLeft}>
               <ArrowBigLeft size={18} strokeWidth={2} />
+            </button>
+            <button onClick={moveDown}>
+              <ArrowBigDown size={18} strokeWidth={2} />
             </button>
             <button onClick={rotate}>
               <ArrowBigUp size={18} strokeWidth={2} />
