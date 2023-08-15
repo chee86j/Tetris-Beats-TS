@@ -44,15 +44,17 @@ body {
 .app {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 75vh;
+  justify-content:flex-start;
+  min-height: 100vh;
   margin: 0;
   overflow: hidden;
 }
 
 .game-over {
   display: flex;
+  text-align: center;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   color: rgba(255, 255, 255, 255);
   font-family: Arial, Helvetica, sans-serif;
@@ -63,29 +65,33 @@ body {
 
 .pastScores {
   font-size: x-large;
-  display: contents;
+  /* display: contents; */
   flex-direction: column;
   align-items: center;
   margin-top: 0;
+  margin-bottom: 0;
   gap: 0;
 }
 
 .earnedScore {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   color: rgba(255, 255, 255, 255);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 2.0rem;
-  margin-top: 1rem;
+  margin-top: 0 rem;
 }
 
 h1 {
-  text-align: center;
-  grid-area: title;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 body {
@@ -120,7 +126,7 @@ button {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 10px;
-  margin-top: 1rem;
+  margin-top: 0;
 }
 
 .game-container {
@@ -148,11 +154,16 @@ button {
   align-self: flex-start;
   align-items: center;
 }
+.game-controller {
+  transform: scale(1.5);
+  margin-top: 3rem;
+}
 
 .controls-container {
   display: flex;
   flex-direction: center;
   align-items: center;
+  margin-top: -1.5rem;
 }
 
 .directional-controls {
@@ -194,10 +205,18 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   font-weight: semi-bold;
   gap: 0;
   margin-top: 0;
   margin-left: -38px;
+}
+
+.custom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .value {
@@ -222,11 +241,6 @@ button {
   cursor: pointer;
 }
 
-.title {
-  text-align: center;
-  position: relative;
-}
-
 .game-container, .game-over {
   margin-top: 0px;
 }
@@ -234,6 +248,7 @@ button {
 .title h1 {
   font-size: 6rem;
   margin-bottom: 0;
+  margin-top: 0;
 }
 
 .title .t {
@@ -293,7 +308,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;  
+  gap: 3px;  
 }
 .timer {
   display: flex;
@@ -303,7 +318,6 @@ button {
   font-weight: normal;
   font-size: large;
   color: rgb(252, 252, 252);
-  margin-bottom: 2px;
   margin-top: 2px;
 }
 
@@ -454,14 +468,13 @@ button {
   }
 
   .title {
-    transform: scale(.9 );
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
 
   :root {
-    --tile-size: 14px;
-    --border-width: 4px;
+    --tile-size: 13px;
+    --border-width: 3px;
   }
 
   .game-info {
@@ -477,7 +490,6 @@ button {
     font-size: 15px;
     margin-top: 3rem;
     margin-left: -3px;
-    
   }
 
 }

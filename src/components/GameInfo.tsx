@@ -37,10 +37,10 @@ const GameInfo: React.FC<GameInfoProps> = ({
         <Timer isPaused={isPaused} />
       </div>
 
-      <div className="buttons">
+      <div className="custom">
         {isPlaying && isPaused && (
           <button onClick={resumeGame}>
-            <Play size={24} strokeWidth={2} />
+            <Play size={18} strokeWidth={2} />
           </button>
         )}
         {isPlaying && !isPaused && (
