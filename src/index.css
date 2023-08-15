@@ -129,6 +129,7 @@ button {
   font-weight: bold;
   font-size: 10px;
   margin-top: 0;
+  cursor: pointer;
 }
 
 .game-container {
