@@ -22,7 +22,6 @@ enum TickSpeed {
   Normal = 1000,
   Sliding = 100,
   Fast = 50,
-  Instantly = 0.0001,
 }
 
 function getTickSpeedForLevel(level: number): number {
@@ -51,7 +50,6 @@ export function useTetris() {
   const [isPaused, setIsPaused] = useState(false);
   const [isDropping, setIsDropping] = useState(true);
   const [heldBlock, setHeldBlock] = useState<Block | null>(null);
-  const [level, setLevel] = useState(0);
   const [linesCleared, setLinesCleared] = useState(0);
   const [totalLinesCleared, setTotalLinesCleared] = useState(0);
   const [currentLevel, setCurrentLevel] = useState(0);
@@ -81,7 +79,7 @@ export function useTetris() {
     setIsPlaying(true);
     setTickSpeed(TickSpeed.Normal);
     setGameOver(false);
-    setLevel(0);
+    setCurrentLevel(0);
     dispatchBoardState({ type: "start" });
     setHeldBlock(null);
   }, [dispatchBoardState]);
@@ -137,11 +135,11 @@ export function useTetris() {
       // BPS points for 1, 2, 3, and 4 lines cleared
       const basePoints = [40, 100, 300, 1200];
       // Calculate the points for the given number of lines cleared and level
-      const points = basePoints[linesCleared - 1] * (level + 1);
+      const points = basePoints[linesCleared - 1] * (currentLevel + 1);
 
       return { points, linesCleared };
     },
-    [level]
+    [currentLevel]
   );
 
   const notifyScore = (points: number, linesCleared: number) => {
