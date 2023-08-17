@@ -9,14 +9,10 @@ import "react-toastify/dist/ReactToastify.css";
 import GameOver from "./components/GameOver";
 import Controls from "./components/Controls";
 import GameInfo from "./components/GameInfo";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import image1 from "./images/image1.jpg";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import image2 from "./images/image2.jpg";
 import "./index.css";
 
 function App() {
-  const [isTetrisEffectTheme, setIsTetrisEffectTheme] = useState(true);
+  const [currentTheme, setCurrentTheme] = useState("theme1");
   const {
     board,
     startGame,
@@ -36,7 +32,18 @@ function App() {
   } = useTetris();
 
   const toggleTheme = () => {
-    setIsTetrisEffectTheme((prevTheme) => !prevTheme);
+    setCurrentTheme((prevTheme) => {
+      switch (prevTheme) {
+        case "theme1":
+          return "theme2";
+        case "theme2":
+          return "theme3";
+        case "theme3":
+          return "theme1";
+        default:
+          return prevTheme;
+      }
+    });
   };
 
   const handleMoveLeft = () => {
@@ -53,7 +60,7 @@ function App() {
   };
 
   return (
-    <div className={`app ${isTetrisEffectTheme ? "theme1" : "theme2"}`}>
+    <div className={`app ${currentTheme}`}>
       <ShinyStars children={undefined} />
       <ToastContainer />
       <div className="title">

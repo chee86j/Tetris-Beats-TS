@@ -4,7 +4,7 @@ body {
   padding: 0;
   height: 100%;
   overflow: hidden;
-} 
+}
 
 :root {
   --bg-color: rgba(150, 150, 150, 1);
@@ -26,15 +26,14 @@ body {
   --col-center: calc(var(--tile-size) * 10);
   --grid-height: calc(var(--tile-size) * 18);
   --cell-glow-color: rgba(255, 255, 255, 0.5);
-  --pulse-duration: var(--color-1)s:
+  --pulse-duration: var(--color-1) s;
 }
-
 
 .instructions {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
 }
 
 #container {
@@ -83,7 +82,7 @@ body {
   color: rgba(255, 255, 255, 255);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  font-size: 2.0rem;
+  font-size: 2rem;
   margin-top: 0 rem;
 }
 
@@ -97,18 +96,28 @@ h1 {
 }
 
 body {
-  background-image: url("./images/image1.jpg") no-repeat center center fixed;
-  background-size: cover;
-  max-width: 100%;
+  background-image: url("https://wallpaperaccess.com/full/17510.jpg");
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
   display: block;
+  overflow: hidden;
 }
 
 .theme1 {
-  background-image: url("./images/image1.jpg");
+  background-image: url("https://wallpaperaccess.com/full/17510.jpg");
 }
 
 .theme2 {
-  background-image: url("./images/image2.jpg");
+  background-image: url("https://wallpaperaccess.com/full/17520.jpg");
+}
+
+.theme3 {
+  background-image: url("https://wallpaperaccess.com/full/19609.jpg");
 }
 
 button {
@@ -126,7 +135,7 @@ button {
   grid-template-columns: 1fr 1fr 1fr;
   flex-direction: row;
   align-items: center;
-  justify-content:first baseline;
+  justify-content: first baseline;
   color: rgba(255, 255, 255, 255);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -180,7 +189,7 @@ button {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;;
+  align-items: center;
   font-size: large;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -233,7 +242,8 @@ button {
   cursor: pointer;
 }
 
-.game-container, .game-over {
+.game-container,
+.game-over {
   margin-top: 0px;
 }
 
@@ -300,7 +310,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;  
+  gap: 3px;
 }
 .timer {
   display: flex;
@@ -320,7 +330,7 @@ button {
 .held-piece {
   margin-top: 0;
   font-family: Arial, Helvetica, sans-serif;
-  transform: scale(.90);
+  transform: scale(0.9);
   display: flexbox;
 }
 
@@ -331,14 +341,13 @@ button {
   grid-gap: 10px;
   flex-direction: column-reverse;
   align-items: center;
-  transform: scale(.80);
+  transform: scale(0.8);
   color: rgb(252, 252, 252);
   margin-bottom: 0;
-  font-size:large;
+  font-size: large;
   font-family: Arial, Helvetica, sans-serif;
   margin-top: 0;
 }
-
 
 .cell {
   width: var(--tile-size);
@@ -443,7 +452,6 @@ button {
 @media (min-width: 321px) and (max-width: 480px) {
   .controls-container {
     justify-content: space-evenly;
-
   }
 
   .game-over {
@@ -455,8 +463,8 @@ button {
   }
 
   .next {
-      margin-right: 3px;
-      margin-top: -2rem;
+    margin-right: 3px;
+    margin-top: -2rem;
   }
 
   .title {
@@ -487,15 +495,12 @@ button {
     margin-top: 3rem;
     margin-left: -3px;
   }
-
 }
-
 
 /* Responsive Web Design */
 @media (min-width: 768px) {
   .controls-container {
     justify-content: space-evenly;
-
   }
 
   .game-over {
@@ -512,13 +517,13 @@ button {
   }
 
   .next {
-      margin-right: 3px;
-      margin-top: -2rem;
-      transform: scale(1.25);
+    margin-right: 3px;
+    margin-top: -2rem;
+    transform: scale(1.25);
   }
 
   .title {
-    transform: scale(1.0);
+    transform: scale(1);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -528,7 +533,7 @@ button {
 
   :root {
     --tile-size: 24px;
-  --border-width: 8px;
+    --border-width: 8px;
   }
 
   .game-info {
@@ -545,7 +550,6 @@ button {
     font-size: 11px;
     margin-top: 1rem;
   }
-
 }
 
 /* Responsive Web Design */
@@ -582,7 +586,7 @@ button {
 
   :root {
     --tile-size: 30px;
-  --border-width: 10px;
+    --border-width: 10px;
   }
 
   .score {
@@ -599,7 +603,6 @@ button {
     margin-top: 2rem;
     transform: scale(1.5);
   }
-
 }
 
 /* Responsive Web Design - Tablet*/
@@ -609,7 +612,7 @@ button {
   }
 
   .game-over {
-    transform: scale(.85);
+    transform: scale(0.85);
     margin-top: -2rem;
   }
 
@@ -641,14 +644,13 @@ button {
   }
 
   .title {
-    transform: scale(.85);
+    transform: scale(0.85);
     margin-top: -1rem;
     margin-bottom: -1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-items: center;
-
   }
 
   :root {
@@ -670,5 +672,4 @@ button {
     margin-top: 0;
     transform: scale(1);
   }
-
 }
