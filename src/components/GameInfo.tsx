@@ -51,7 +51,7 @@ const GameInfo: React.FC<GameInfoProps> = ({
         {isPlaying && !isPaused && (
           <button onClick={startGame}>New Game</button>
         )}
-        <button onClick={toggleTheme}>Toggle Theme</button>
+        <button onClick={toggleTheme}>Theme</button>
       </div>
     </div>
   );

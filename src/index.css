@@ -450,8 +450,13 @@ button {
 }
 
 @media (min-width: 321px) and (max-width: 480px) {
+  .game-container {
+    margin-left: 1.5rem;
+  }
+
   .controls-container {
     justify-content: space-evenly;
+    margin-left: -1.5rem;
   }
 
   .game-over {
@@ -463,8 +468,8 @@ button {
   }
 
   .next {
-    margin-right: 3px;
-    margin-top: -2rem;
+    margin-right: 5px;
+    margin-top: -5rem;
   }
 
   .title {
@@ -477,13 +482,67 @@ button {
   }
 
   :root {
-    --tile-size: 13px;
+    --tile-size: 12px;
     --border-width: 3px;
   }
 
   .game-info {
-    margin-left: 3px;
-    margin-top: -2rem;
+    margin-left: -2rem;
+    margin-top: -6rem;
+  }
+
+  button {
+    padding: 4px;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 3rem;
+    margin-left: -3px;
+  }
+}
+
+@media (min-width: 540px) {
+  .game-container {
+    margin-left: 1.5rem;
+  }
+
+  .controls-container {
+    justify-content: space-evenly;
+    margin-left: -1.5rem;
+    margin-top: -6rem;
+  }
+
+  .game-over {
+    transform: scale(1.1);
+  }
+
+  .upcoming {
+    gap: 1rem;
+  }
+
+  .next {
+    margin-right: 5px;
+    margin-top: -5rem;
+  }
+
+  .title {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+  }
+
+  :root {
+    --tile-size: 15px;
+    --border-width: 5px;
+  }
+
+  .game-info {
+    margin-left: -2rem;
+    margin-top: -6rem;
   }
 
   button {
@@ -501,6 +560,7 @@ button {
 @media (min-width: 768px) {
   .controls-container {
     justify-content: space-evenly;
+    margin-top: -3rem;
   }
 
   .game-over {
@@ -602,6 +662,8 @@ button {
     font-size: 10px;
     margin-top: 2rem;
     transform: scale(1.5);
+    margin-left: 9px;
+    margin-right: 9px;
   }
 }
 
@@ -609,6 +671,7 @@ button {
 @media (min-width: 1024px) {
   .controls-container {
     justify-content: space-around;
+    margin-right: -2rem;
   }
 
   .game-over {
@@ -627,7 +690,7 @@ button {
 
   .next {
     font-size: 1.2rem;
-    margin-right: -20rem;
+    margin-right: -17rem;
     margin-top: -2rem;
     transform: scale(1.2);
   }
@@ -637,7 +700,7 @@ button {
   }
 
   .game-info {
-    margin-left: -21rem;
+    margin-left: -10rem;
     margin-top: -5rem;
     transform: scale(1.4);
     gap: 2rem;
@@ -646,7 +709,8 @@ button {
   .title {
     transform: scale(0.85);
     margin-top: -1rem;
-    margin-bottom: -1rem;
+    margin-bottom: 0.7rem;
+    margin-right: -4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -667,9 +731,11 @@ button {
   }
 
   button {
-    padding: 5px;
+    padding: 3px;
     font-size: 7px;
-    margin-top: 0;
+    margin-top: 18px;
     transform: scale(1);
+    margin-left: 1px;
+    margin-right: 1px;
   }
 }
