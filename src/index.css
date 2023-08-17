@@ -61,12 +61,12 @@ body {
   color: rgba(255, 255, 255, 255);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  font-size: 4rem;
+  font-size: 3.5rem;
   margin-top: 0rem;
 }
 
 .pastScores {
-  font-size: x-large;
+  font-size: large;
   /* display: contents; */
   flex-direction: column;
   align-items: center;
@@ -97,30 +97,19 @@ h1 {
 }
 
 body {
-  /* background: url("https://wallpaperaccess.com/full/39615.jpg") */
-  background: url("https://wallpaperaccess.com/full/17510.jpg")
-    no-repeat center center fixed;
+  background-image: url("./images/image1.jpg") no-repeat center center fixed;
   background-size: cover;
   max-width: 100%;
   display: block;
 }
 
 .theme1 {
-  background: url("https://wallpaperaccess.com/full/39615.jpg")
-    no-repeat center center fixed;
-  background-size: cover;
-  max-width: 100%;
-  display: block;
+  background-image: url("./images/image1.jpg");
 }
 
 .theme2 {
-  background: url("https://wallpaperaccess.com/full/17510.jpg")
-    no-repeat center center fixed;
-  background-size: cover;
-  max-width: 100%;
-  display: block;
+  background-image: url("./images/image2.jpg");
 }
-
 
 button {
   padding: 6px;
@@ -510,7 +499,12 @@ button {
   }
 
   .game-over {
-    transform: scale(1.75);
+    transform: scale(1);
+  }
+
+  .pastScores {
+    transform: scale(1.2);
+    margin-top: 5rem;
   }
 
   .upcoming {
@@ -529,6 +523,7 @@ button {
     flex-direction: column;
     align-items: center;
     justify-items: center;
+    margin-top: -10rem;
   }
 
   :root {
@@ -560,7 +555,11 @@ button {
   }
 
   .game-over {
-    transform: scale(1.75);
+    transform: scale(1.3);
+  }
+
+  .pastScores {
+    transform: scale(1.5);
   }
 
   .upcoming {
@@ -573,7 +572,7 @@ button {
 
   .title {
     transform: scale(1.5);
-    margin-top: 5rem;
+    margin-top: 0rem;
     margin-bottom: 5rem;
     display: flex;
     flex-direction: column;
@@ -610,8 +609,13 @@ button {
   }
 
   .game-over {
-    transform: scale(1);
+    transform: scale(.85);
     margin-top: -2rem;
+  }
+
+  .pastScores {
+    transform: scale(1.4);
+    margin-top: 3rem;
   }
 
   .upcoming {

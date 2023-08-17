@@ -9,6 +9,10 @@ import "react-toastify/dist/ReactToastify.css";
 import GameOver from "./components/GameOver";
 import Controls from "./components/Controls";
 import GameInfo from "./components/GameInfo";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import image1 from "./images/image1.jpg";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import image2 from "./images/image2.jpg";
 import "./index.css";
 
 function App() {
@@ -49,7 +53,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className={`app ${isTetrisEffectTheme ? "theme1" : "theme2"}`}>
       <ShinyStars children={undefined} />
       <ToastContainer />
       <div className="title">
