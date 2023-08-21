@@ -17,19 +17,7 @@ import {
 } from "./useTetrisBoard";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-enum TickSpeed {
-  Normal = 1000,
-  Sliding = 100,
-  Fast = 50,
-}
-
-function getTickSpeedForLevel(level: number): number {
-  if (level === 0) return TickSpeed.Normal;
-  // Gravity Formula for Tetris from https://harddrop.com/wiki/Tetris_Worlds
-  const time = (0.8 - (level - 1) * 0.007) ** (level - 1);
-  return time * 1000;
-}
+import { TickSpeed, getTickSpeedForLevel } from "./useGameStatus";
 
 function generateNextBlocks(numBlocks: number): Block[] {
   const blocks: Block[] = [];
