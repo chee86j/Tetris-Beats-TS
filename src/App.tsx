@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Board from "./components/Board";
 import UpcomingBlocks from "./components/UpcomingBlocks";
 import { useTetris } from "./hooks/useTetris";
@@ -9,10 +8,11 @@ import "react-toastify/dist/ReactToastify.css";
 import GameOver from "./components/GameOver";
 import Controls from "./components/Controls";
 import GameInfo from "./components/GameInfo";
+import { CarouselComponent } from "./components/Carousel";
+
 import "./index.css";
 
 function App() {
-  const [currentTheme, setCurrentTheme] = useState("theme1");
   const {
     board,
     startGame,
@@ -31,21 +31,6 @@ function App() {
     level,
   } = useTetris();
 
-  const toggleTheme = () => {
-    setCurrentTheme((prevTheme) => {
-      switch (prevTheme) {
-        case "theme1":
-          return "theme2";
-        case "theme2":
-          return "theme3";
-        case "theme3":
-          return "theme1";
-        default:
-          return prevTheme;
-      }
-    });
-  };
-
   const handleMoveLeft = () => {
     dispatchBoardState({ type: "move", isPressingLeft: true });
   };
@@ -60,7 +45,8 @@ function App() {
   };
 
   return (
-    <div className={`app ${currentTheme}`}>
+    <div className={`app`}>
+      <CarouselComponent />
       <ShinyStars children={undefined} />
       <ToastContainer />
       <div className="title">
@@ -115,7 +101,6 @@ function App() {
               resumeGame={resumeGame}
               pauseGame={pauseGame}
               startGame={startGame}
-              toggleTheme={toggleTheme}
             />
           </div>
         )

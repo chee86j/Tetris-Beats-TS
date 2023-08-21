@@ -95,29 +95,30 @@ h1 {
   margin-bottom: 0;
 }
 
-body {
-  background-image: url("https://wallpaperaccess.com/full/17510.jpg");
+.theme {
+  font-size: small;
+  margin-top: 0;
+  margin-bottom: 0;
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+.background-carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.wallpaper {
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: cover;
   background-position: center center;
-  margin: 0;
-  padding: 0;
   height: 100vh;
   width: 100vw;
-  display: block;
-  overflow: hidden;
-}
-
-.theme1 {
-  background-image: url("https://wallpaperaccess.com/full/17510.jpg");
-}
-
-.theme2 {
-  background-image: url("https://wallpaperaccess.com/full/17520.jpg");
-}
-
-.theme3 {
-  background-image: url("https://wallpaperaccess.com/full/19609.jpg");
 }
 
 button {
@@ -473,8 +474,8 @@ button {
   }
 
   .title {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;

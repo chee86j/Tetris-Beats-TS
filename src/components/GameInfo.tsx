@@ -11,7 +11,6 @@ type GameInfoProps = {
   resumeGame: () => void;
   pauseGame: () => void;
   startGame: () => void;
-  toggleTheme: () => void;
 };
 
 const GameInfo: React.FC<GameInfoProps> = ({
@@ -23,7 +22,6 @@ const GameInfo: React.FC<GameInfoProps> = ({
   resumeGame,
   pauseGame,
   startGame,
-  toggleTheme,
 }) => {
   return (
     <div className="game-info">
@@ -51,7 +49,6 @@ const GameInfo: React.FC<GameInfoProps> = ({
         {isPlaying && !isPaused && (
           <button onClick={startGame}>New Game</button>
         )}
-        <button onClick={toggleTheme}>Theme</button>
       </div>
     </div>
   );
