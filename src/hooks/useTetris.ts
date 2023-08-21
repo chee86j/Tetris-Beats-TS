@@ -94,11 +94,14 @@ export function useTetris() {
 
   useEffect(() => {
     const newCurrentLevel = Math.floor(totalLinesCleared / 10);
+    if (newCurrentLevel > currentLevel) {
+      toast.success(`Advanced to Level ${newCurrentLevel}!`);
+    }
     setCurrentLevel(newCurrentLevel);
     // Tick Speed adjustment based on level
     setTickSpeed(getTickSpeedForLevel(newCurrentLevel));
     // console.log(`Level: ${newCurrentLevel}, Tick Speed: ${tickSpeed}ms`);
-  }, [totalLinesCleared, tickSpeed]);
+  }, [totalLinesCleared, tickSpeed, currentLevel]);
 
   const getGhostPosition = useCallback(
     (
