@@ -827,7 +827,10 @@ button {
 
 @media (orientation: landscape) and (min-width: 720px) {
   .app {
-    transform: scale(1.4);
+    transform: scale(1);
+  }
+  .title {
+    display: none;
   }
   .game-info {
     margin-left: -5rem;
@@ -835,7 +838,7 @@ button {
     transform: scale(1.1);
   }
   :root {
-    --tile-size: 5px;
+    --tile-size: 8px;
     --border-width: 3px;
   }
   button {
@@ -849,11 +852,11 @@ button {
     transform: scale(1.2);
   }
   .title {
-    transform: scale(0.3);
+    display: none;
   }
   .game-info {
     margin-left: -6rem;
-    margin-top: -7rem;
+    margin-top: -rem;
     transform: scale(1.2);
   }
   button {
@@ -863,10 +866,13 @@ button {
 
 @media (orientation: landscape) and (min-width: 1024px) {
   .app {
-    transform: scale(2);
+    transform: scale(1.8);
+  }
+  .title {
+    display: none;
   }
   :root {
-    --tile-size: 9px;
+    --tile-size: 7px;
     --border-width: 3px;
   }
   button {
