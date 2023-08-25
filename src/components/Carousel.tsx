@@ -20,7 +20,7 @@ export function CarouselComponent() {
         infiniteLoop
         autoPlay
         interval={6000000}
-        swipeable={true}
+        swipeable={false}
         showArrows={false}
         showIndicators={true}
         onChange={(index) => setCurrentIndex(index)}
