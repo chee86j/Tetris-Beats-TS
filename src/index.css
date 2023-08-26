@@ -457,7 +457,7 @@ button {
 
   .controls-container {
     justify-content: space-evenly;
-    margin-left: -1.5rem;
+    margin-left: 0;
   }
 
   .game-over {
@@ -509,7 +509,7 @@ button {
   }
 
   .controls-container {
-    justify-content: space-evenly;
+    justify-content: center;
     margin-left: -1.5rem;
     margin-top: -6rem;
   }
@@ -829,9 +829,6 @@ button {
   .app {
     transform: scale(1);
   }
-  .title {
-    display: none;
-  }
   .game-info {
     margin-left: -5rem;
     margin-top: -7rem;
@@ -844,15 +841,13 @@ button {
   button {
     transform: scale(0.4);
     padding: 6px;
+    justify-content: center;
   }
 }
 
 @media (orientation: landscape) and (min-width: 914px) {
   .app {
     transform: scale(1.2);
-  }
-  .title {
-    display: none;
   }
   .game-info {
     margin-left: -6rem;
@@ -868,9 +863,6 @@ button {
   .app {
     transform: scale(1.8);
   }
-  .title {
-    display: none;
-  }
   :root {
     --tile-size: 7px;
     --border-width: 3px;
@@ -882,7 +874,10 @@ button {
 
 @media (orientation: landscape) and (min-width: 1280px) {
   .app {
-    transform: scale(2.8);
+    transform: scale(2.5);
+  }
+  .next {
+    margin-top: -3rem;
   }
   .game-info {
     margin-left: -6rem;
@@ -890,7 +885,7 @@ button {
     transform: scale(1.2);
   }
   :root {
-    --tile-size: 6.5px;
+    --tile-size: 5px;
     --border-width: 3px;
   }
   button {
