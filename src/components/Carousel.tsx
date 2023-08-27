@@ -22,7 +22,7 @@ export function CarouselComponent() {
         interval={6000000}
         swipeable={false}
         showArrows={false}
-        showIndicators={true}
+        showIndicators={false}
         onChange={(index) => setCurrentIndex(index)}
         className="background-carousel"
       >

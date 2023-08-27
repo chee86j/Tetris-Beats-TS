@@ -50,6 +50,17 @@ body {
   margin: 0;
   overflow: hidden;
 }
+.instructions {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: extra-bold;
+  font-size: Small;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: self-start;
+  text-align: left;
+}
 
 .game-over {
   display: flex;
@@ -243,7 +254,9 @@ button {
   cursor: pointer;
 }
 
-.game-container,
+.game-container {
+  margin-top: -2.5rem;
+}
 .game-over {
   margin-top: 0px;
 }
@@ -458,6 +471,7 @@ button {
   .controls-container {
     justify-content: space-evenly;
     margin-left: 0;
+    margin-top: -6rem;
   }
 
   .game-over {
@@ -829,6 +843,14 @@ button {
   .app {
     transform: scale(1);
   }
+  .title h1 {
+    font-size: 3rem;
+    margin-bottom: 3.5rem;
+  }
+  .game-container {
+    margin-top: -5rem;
+  }
+
   .game-info {
     margin-left: -5rem;
     margin-top: -7rem;

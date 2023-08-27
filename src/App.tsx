@@ -61,6 +61,18 @@ function App() {
         {!isPlaying && !gameOver && (
           <button onClick={startGame}>Start Game</button>
         )}
+        <h2 className="instructions">
+          {!isPlaying && !gameOver && (
+            <>
+              <div>Left Arrow - Move Left</div>
+              <div>Right Arrow - Move Right</div>
+              <div>Down Arrow - Move Down</div>
+              <div>Up Arrow - Rotate</div>
+              <div>C - Hold</div>
+              <div>Space - Hard Drop</div>
+            </>
+          )}
+        </h2>
       </div>
       {gameOver ? (
         <GameOver score={score} startGame={startGame} />
