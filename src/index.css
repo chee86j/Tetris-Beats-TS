@@ -119,7 +119,10 @@ h1 {
 }
 
 .theme {
-  font-size: small;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-size: Large;
   margin-top: 0;
   margin-bottom: 0;
   background-color: transparent;
@@ -506,6 +509,7 @@ button {
     flex-direction: column;
     align-items: center;
     justify-items: center;
+    transform: scale(0.8);
   }
 
   :root {
@@ -554,6 +558,7 @@ button {
   }
 
   .title {
+    transform: scale(0.8);
     margin-top: 1rem;
     margin-bottom: 1rem;
     display: flex;
@@ -615,7 +620,7 @@ button {
     flex-direction: column;
     align-items: center;
     justify-items: center;
-    margin-top: -8rem;
+    margin-top: -5rem;
   }
 
   :root {
@@ -804,7 +809,7 @@ button {
   }
 
   .board {
-    margin-left: 4rem;
+    margin-left: 2rem;
   }
 
   .game-info {
