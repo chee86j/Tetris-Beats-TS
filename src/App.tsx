@@ -85,7 +85,7 @@ function App() {
               </div>
               Next <UpcomingBlocks upcomingBlocks={upcomingBlocks} />{" "}
             </div>
-            <div>
+            <div className="board board-border">
               <Board
                 currentBoard={board}
                 isDropping={false}
@@ -93,6 +93,7 @@ function App() {
                   throw new Error("Function not implemented.");
                 }}
                 dropInterval={0}
+                tetrominoCellClassName="cell committed"
               />
               <Controls
                 moveLeft={handleMoveLeft}

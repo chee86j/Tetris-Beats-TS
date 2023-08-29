@@ -1,5 +1,5 @@
 import Cell from "./Cell";
-import { BoardShape } from "../types";
+import { BoardShape, EmptyCell } from "../types";
 import { useEffect } from "react";
 
 interface Props {
@@ -7,6 +7,7 @@ interface Props {
   isDropping: boolean;
   moveShapeDown: () => void;
   dropInterval: number;
+  tetrominoCellClassName: string;
 }
 
 function Board({
@@ -14,6 +15,7 @@ function Board({
   isDropping,
   moveShapeDown,
   dropInterval,
+  tetrominoCellClassName,
 }: Props) {
   useEffect(() => {
     const interval = setInterval(() => {
@@ -32,7 +34,15 @@ function Board({
       {currentBoard.map((row, rowIndex) => (
         <div className="row" key={`${rowIndex}`}>
           {row.map((cell, colIndex) => (
-            <Cell key={`${rowIndex}-${colIndex}`} type={cell} />
+            <Cell
+              key={`${rowIndex}-${colIndex}`}
+              type={cell}
+              className={
+                cell !== EmptyCell.Empty
+                  ? `${tetrominoCellClassName} committed` // Apply both classes
+                  : ""
+              }
+            />
           ))}
         </div>
       ))}

@@ -7,7 +7,7 @@ body {
 }
 
 :root {
-  --bg-color: rgba(150, 150, 150, 1);
+  --bg-color: rgba(150, 150, 150, 0.235);
   --border-left-color: rgba(255, 255, 255, 0.2);
   --border-top-color: rgba(255, 255, 255, 0.33);
   --border-right-color: rgba(0, 0, 0, 0.15);
@@ -26,7 +26,19 @@ body {
   --col-center: calc(var(--tile-size) * 10);
   --grid-height: calc(var(--tile-size) * 18);
   --cell-glow-color: rgba(255, 255, 255, 0.5);
-  --pulse-duration: var(--color-1) s;
+  --pulse-duration: 3s; /* 3 seconds pulsing rate for cells*/
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .instructions {
@@ -377,16 +389,15 @@ button {
   transition: transform var(--pulse-duration) ease-in-out;
 }
 
-@keyframes pulsate {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
+.board-border {
+  animation: pulsate var(--pulse-duration) 1s;
+  border-left: var(--border-width) solid var(--border-left-color);
+  border-bottom: var(--border-width) solid var(--border-bottom-color);
+  border-right: var(--border-width) solid var(--border-right-color);
+}
+
+.cell.committed {
+  animation: pulsate var(--pulse-duration) infinite;
 }
 
 .cell:hover {
@@ -432,7 +443,8 @@ button {
 
 /* New Theme */
 .cell.Empty {
-  background-color: #333;
+  background-color: rgba(21, 17, 17, 0.7); /* Slightly transparent */
+  /* background-color: rgba(0, 0, 0, 0); Set to transparent */
 }
 
 .cell.I {
