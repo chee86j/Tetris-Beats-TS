@@ -306,7 +306,7 @@ export function useTetris() {
   }, tickSpeed);
 
   useEffect(() => {
-    if (!isPlaying) {
+    if (!isPlaying || isPaused) {
       return;
     }
 
@@ -396,6 +396,7 @@ export function useTetris() {
   }, [
     dispatchBoardState,
     isPlaying,
+    isPaused,
     hardDrop,
     swapWithHold,
     pressDown,
