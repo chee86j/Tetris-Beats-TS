@@ -11,6 +11,7 @@ type GameInfoProps = {
   resumeGame: () => void;
   pauseGame: () => void;
   startGame: () => void;
+  switchAudio: () => void;
 };
 
 const GameInfo: React.FC<GameInfoProps> = ({

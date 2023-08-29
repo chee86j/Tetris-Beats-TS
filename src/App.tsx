@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Board from "./components/Board";
 import UpcomingBlocks from "./components/UpcomingBlocks";
 import { useTetris } from "./hooks/useTetris";
@@ -9,7 +10,7 @@ import GameOver from "./components/GameOver";
 import Controls from "./components/Controls";
 import GameInfo from "./components/GameInfo";
 import { CarouselComponent } from "./components/Carousel";
-
+import ReactAudioPlayer from "react-audio-player";
 import "./index.css";
 
 function App() {
@@ -44,9 +45,32 @@ function App() {
     dispatchBoardState({ type: "move", isRotating: true });
   };
 
+  const [audioIndex, setAudioIndex] = useState(0);
+
+  const audioUrls = [
+    "https://cdn.pixabay.com/audio/2021/09/27/audio_59b8f3d306.mp3",
+    "https://cdn.pixabay.com/audio/2023/08/18/audio_902cf86e70.mp3",
+    "https://cdn.pixabay.com/audio/2022/05/04/audio_6b39b8c39b.mp3",
+    "https://cdn.pixabay.com/audio/2022/02/07/audio_6ccd59b11c.mp3",
+    "https://cdn.pixabay.com/audio/2021/11/09/audio_cf3e4529a2.mp3",
+    "https://cdn.pixabay.com/audio/2023/02/13/audio_90696831ef.mp3",
+    "https://cdn.pixabay.com/audio/2023/01/08/audio_80ccdfebed.mp3",
+    "https://cdn.pixabay.com/audio/2023/04/27/audio_d6ce814591.mp3",
+    "https://cdn.pixabay.com/audio/2022/08/02/audio_884fe92c21.mp3",
+    "https://cdn.pixabay.com/audio/2022/07/26/audio_112f2d606c.mp3",
+    "https://cdn.pixabay.com/audio/2021/09/06/audio_14fb3b6893.mp3",
+  ];
+
   return (
     <div className={`app`}>
       <CarouselComponent />
+      <ReactAudioPlayer
+        className="audio"
+        src={audioUrls[audioIndex]}
+        autoPlay
+        loop
+        controls
+      />
       <ShinyStars children={undefined} />
       <ToastContainer />
       <div className="title">
@@ -114,6 +138,9 @@ function App() {
               resumeGame={resumeGame}
               pauseGame={pauseGame}
               startGame={startGame}
+              switchAudio={() =>
+                setAudioIndex((prevIndex) => (prevIndex + 1) % audioUrls.length)
+              }
             />
           </div>
         )

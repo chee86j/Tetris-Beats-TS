@@ -48,6 +48,21 @@ body {
   justify-content: space-between;
 }
 
+.audio {
+  background-color: rgba(0, 0, 0, 0.15);
+  transform: scale(1);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  bottom: 0px;
+  height: 18px;
+  width: 20rem;
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
 #container {
   background-color: rgba(79, 26, 109, 0.15);
 }
