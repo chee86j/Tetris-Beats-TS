@@ -11,6 +11,7 @@ import Controls from "./components/Controls";
 import GameInfo from "./components/GameInfo";
 import { CarouselComponent } from "./components/Carousel";
 import ReactAudioPlayer from "react-audio-player";
+import { ArrowLeftToLine, ArrowRightToLine } from "lucide-react";
 import "./index.css";
 
 function App() {
@@ -61,9 +62,29 @@ function App() {
     "https://cdn.pixabay.com/audio/2021/09/06/audio_14fb3b6893.mp3",
   ];
 
+  const playPrevious = () => {
+    setAudioIndex(
+      (prevIndex) => (prevIndex - 1 + audioUrls.length) % audioUrls.length
+    );
+  };
+
+  const playNext = () => {
+    setAudioIndex((prevIndex) => (prevIndex + 1) % audioUrls.length);
+  };
+
   return (
     <div className={`app`}>
       <CarouselComponent />
+      {isPlaying && (
+        <div className="audio-controls">
+          <button onClick={playPrevious}>
+            <ArrowLeftToLine size={12} />
+          </button>
+          <button onClick={playNext}>
+            <ArrowRightToLine size={12} />
+          </button>
+        </div>
+      )}
       <ReactAudioPlayer
         className="audio"
         src={audioUrls[audioIndex]}

@@ -497,7 +497,6 @@ button {
   .game-container {
     margin-left: 0rem;
   }
-
   .controls-container {
     justify-content: space-evenly;
     margin-left: 0;
@@ -528,7 +527,7 @@ button {
   }
 
   :root {
-    --tile-size: 15px;
+    --tile-size: 12px;
     --border-width: 4px;
   }
 
@@ -538,7 +537,7 @@ button {
   }
 
   button {
-    padding: 4px;
+    padding: 1px;
     border-radius: 5px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -574,7 +573,7 @@ button {
 
   .title {
     transform: scale(0.8);
-    margin-top: 1rem;
+    margin-top: -1rem;
     margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
@@ -605,6 +604,14 @@ button {
 
 /* Responsive Web Design */
 @media (orientation: portrait) and (min-width: 768px) {
+  .game-container {
+    margin-top: -1.5rem;
+  }
+
+  .audio-controls {
+    margin-top: 2rem;
+  }
+
   .controls-container {
     justify-content: space-evenly;
     margin-top: -3rem;
@@ -629,17 +636,8 @@ button {
     transform: scale(1.25);
   }
 
-  .title {
-    transform: scale(0.8);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-items: center;
-    margin-top: -5rem;
-  }
-
   :root {
-    --tile-size: 24px;
+    --tile-size: 20px;
     --border-width: 8px;
   }
 
@@ -650,7 +648,7 @@ button {
   }
 
   button {
-    padding: 12px;
+    padding: 10px;
     border-radius: 5px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -682,7 +680,7 @@ button {
   }
 
   .title {
-    transform: scale(1.5);
+    transform: scale(1);
     margin-top: 0rem;
     margin-bottom: 5rem;
     display: flex;
@@ -693,7 +691,7 @@ button {
 
   :root {
     --tile-size: 30px;
-    --border-width: 10px;
+    --border-width: 9px;
   }
 
   .score {
@@ -876,13 +874,17 @@ button {
     transform: scale(1);
   }
   .title h1 {
-    font-size: 3rem;
-    margin-bottom: 3.5rem;
+    display: none;
+  }
+  .audio-controls {
+    transform: scale(0.7);
+  }
+  .audio {
+    transform: scale(0.5);
   }
   .game-container {
-    margin-top: -5rem;
+    margin-top: 0rem;
   }
-
   .game-info {
     margin-left: -5rem;
     margin-top: -7rem;
@@ -915,14 +917,18 @@ button {
 
 @media (orientation: landscape) and (min-width: 1024px) {
   .app {
-    transform: scale(1.8);
+    transform: scale(1.5);
   }
   :root {
     --tile-size: 7px;
     --border-width: 3px;
   }
+  .audio-controls {
+    transform: scale(1.3);
+    margin-bottom: 2rem;
+  }
   button {
-    transform: scale(0.4);
+    transform: scale(0.5);
   }
 }
 
