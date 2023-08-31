@@ -41,6 +41,19 @@ export function CarouselComponent() {
         <div
           className="wallpaper"
           style={{
+            backgroundImage: `url("https://wallpaperaccess.com/full/1801911.jpg")`,
+          }}
+        ></div>
+        <div
+          className="wallpaper"
+          style={{
+            backgroundImage: `url("https://wallpaperaccess.com/full/1801922.jpg")`,
+          }}
+        ></div>
+
+        <div
+          className="wallpaper"
+          style={{
             backgroundImage: `url("https://wallpaperaccess.com/full/17520.jpg")`,
           }}
         ></div>
@@ -71,6 +84,12 @@ export function CarouselComponent() {
         <div
           className="wallpaper"
           style={{
+            backgroundImage: `url("https://wallpaperaccess.com/full/18517.jpg")`,
+          }}
+        ></div>
+        <div
+          className="wallpaper"
+          style={{
             backgroundImage: `url("https://wallpaperaccess.com/full/6313.jpg")`,
           }}
         ></div>
@@ -78,6 +97,12 @@ export function CarouselComponent() {
           className="wallpaper"
           style={{
             backgroundImage: `url("https://wallpaperaccess.com/full/121245.jpg")`,
+          }}
+        ></div>
+        <div
+          className="wallpaper"
+          style={{
+            backgroundImage: `url("https://wallpaperaccess.com/full/1365152.jpg")`,
           }}
         ></div>
         <div

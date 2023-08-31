@@ -9,7 +9,7 @@ errors early in the development process, leading to more reliable and robust cod
 checking empowered me to write more organized and predictable code, enhancing overall development efficiency
 and making the project more maintainable in the long run.
 
-# Tetris Beats TS
+# WELCOME to TETRIS BEATS TS
 
 Get ready to redefine your Tetris experience with Tetris Beat TS – a game that harmonizes classic gameplay
 with modern music, stunning visuals, and dynamic themes. Say goodbye to the ordinary and step into a world
@@ -86,6 +86,7 @@ Integration of T-Spin Combos: Master the art of T-Spin combos to score more poin
 
 This app is based on the Tetris game concept and was created for educational purposes.
 Audio tracks are sourced from Pixabay's collection of royalty-free music
+Wallpapers are sourced from https://wallpaperaccess.com's collection of wallpapers
 Tetris rules and gameplay are based on the Tetris guidelines from https://tetris.wiki/Tetris.wiki.
 
 # License
