@@ -9,7 +9,7 @@ export function CarouselComponent() {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % numberOfSlides);
   };
 
-  const numberOfSlides = 10;
+  const numberOfSlides = 15;
 
   return (
     <div>
@@ -97,6 +97,12 @@ export function CarouselComponent() {
           className="wallpaper"
           style={{
             backgroundImage: `url("https://wallpaperaccess.com/full/121245.jpg")`,
+          }}
+        ></div>
+        <div
+          className="wallpaper"
+          style={{
+            backgroundImage: `url("https://wallpaperaccess.com/full/5036672.jpg")`,
           }}
         ></div>
         <div
