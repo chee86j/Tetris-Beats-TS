@@ -15,6 +15,8 @@ Get ready to redefine your Tetris experience with Tetris Beat TS – a game that
 with modern music, stunning visuals, and dynamic themes. Say goodbye to the ordinary and step into a world
 where blocks groove to the beat and your gaming adventure takes center stage.
 
+![TetrisBeatsTS](TetrisBeatsTS.gif)
+
 # Features
 
 Tetris Gameplay: Enjoy the timeless gameplay of Tetris, where you control falling tetrominoes to complete
