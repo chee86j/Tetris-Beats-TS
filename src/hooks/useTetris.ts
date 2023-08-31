@@ -232,7 +232,19 @@ export function useTetris() {
     for (let row = BOARD_HEIGHT - 1; row >= 0; row--) {
       if (newBoard[row].every((entry) => entry !== EmptyCell.Empty)) {
         numCleared++;
-        newBoard.splice(row, 1);
+
+        // Update newBoard with a special value to indicate cleared rows
+        newBoard[row] = new Array(10).fill("clearing-color");
+
+        // Schedule removal of row after animation
+        setTimeout(() => {
+          newBoard.splice(row, 1);
+          dispatchBoardState({
+            type: "commit",
+            newBoard: newBoard,
+            newBlock,
+          });
+        }, 1000);
       }
     }
 

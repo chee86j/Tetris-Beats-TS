@@ -52,8 +52,8 @@ To run this app locally, follow these steps:
 
 Clone this repository to your local machine.
 Navigate to the project directory and install the required dependencies using npm install.
-Start the development server using npm start.
-Open your browser and navigate to http://localhost:3000 to play the game.
+Start the development server using 'vite'.
+Open your browser and navigate to http://localhost:5173 to play the game.
 
 # Technologies Used
 
