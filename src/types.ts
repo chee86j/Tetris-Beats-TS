@@ -37,43 +37,50 @@ export const SHAPES: ShapesObj = {
   },
   J: {
     shape: [
-      [false, false, false],
-      [true, false, false],
-      [true, true, true],
+      [false, false, false, false],
+      [false, false, false, false],
+      [true, false, false, false],
+      [true, true, true, false],
     ],
   },
   L: {
     shape: [
-      [false, false, false],
-      [false, false, true],
-      [true, true, true],
+      [false, false, false, false],
+      [false, false, false, false],
+      [false, false, true, false],
+      [true, true, true, false],
     ],
   },
   O: {
     shape: [
-      [true, true],
-      [true, true],
+      [false, false, false, false],
+      [false, false, false, false],
+      [true, true, false, false],
+      [true, true, false, false],
     ],
   },
   S: {
     shape: [
-      [false, false, false],
-      [false, true, true],
-      [true, true, false],
+      [false, false, false, false],
+      [false, false, false, false],
+      [false, true, true, false],
+      [true, true, false, false],
     ],
   },
   T: {
     shape: [
-      [false, false, false],
-      [false, true, false],
-      [true, true, true],
+      [false, false, false, false],
+      [false, false, false, false],
+      [false, true, false, false],
+      [true, true, true, false],
     ],
   },
   Z: {
     shape: [
-      [false, false, false],
-      [true, true, false],
-      [false, true, true],
+      [false, false, false, false],
+      [false, false, false, false],
+      [true, true, false, false],
+      [false, true, true, false],
     ],
   },
 };
