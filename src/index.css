@@ -205,6 +205,8 @@ button {
 .controls-container {
   display: flex;
   flex-direction: center;
+  flex: wrap;
+  justify-content: center;
   align-items: center;
   margin-top: -1.5rem;
 }
@@ -292,6 +294,10 @@ button {
 }
 
 .title h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 6rem;
   margin-bottom: 0;
   margin-top: 0;
@@ -412,6 +418,8 @@ button {
   border-left: var(--border-width) solid var(--border-left-color);
   border-bottom: var(--border-width) solid var(--border-bottom-color);
   border-right: var(--border-width) solid var(--border-right-color);
+  width: calc(10 * var(--tile-size));
+  height: calc(20 * var(--tile-size));
 }
 
 .cell.committed {
@@ -493,13 +501,22 @@ button {
   background-color: #ff4d4d;
 }
 
+/* Responsive Design*/
+
 @media (orientation: portrait) and (min-width: 321px) and (max-width: 480px) {
-  .game-container {
-    margin-left: 0rem;
+  .audio-controls {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
   }
+
+  .game-container {
+    position: absolute;
+    top: 25vh;
+  }
+
   .controls-container {
-    justify-content: space-evenly;
-    margin-left: 0;
+    margin-left: 0rem;
     margin-top: -6rem;
   }
 
@@ -511,23 +528,26 @@ button {
     gap: 1rem;
   }
 
-  .next {
-    margin-right: 0px;
-    margin-top: -5rem;
+  .next,
+  .game-info {
+    bottom: 50vh;
+    transform: scale(0.8);
+    font-size: 2rem;
   }
 
-  .title {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-items: center;
-    transform: scale(0.8);
+  .next {
+    transform: scale(0.7);
+  }
+
+  .title h1 {
+    position: absolute;
+    top: 10vh;
+    left: 5vw;
+    transform: scale(0.75);
   }
 
   :root {
-    --tile-size: 12px;
+    --tile-size: 20px;
     --border-width: 4px;
   }
 
@@ -547,408 +567,602 @@ button {
   }
 }
 
-@media (min-width: 540px) {
+/* Landscape mode for 321px - 480px */
+@media screen and (orientation: landscape) and (min-width: 321px) and (max-width: 480px) {
+  .audio-controls {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
   .game-container {
-    margin-left: 1.5rem;
+    top: 10vh;
   }
 
   .controls-container {
-    justify-content: center;
-    margin-left: -1.5rem;
-    margin-top: -6rem;
+    margin-top: -2rem;
   }
 
-  .game-over {
-    transform: scale(1.1);
-  }
-
-  .upcoming {
-    gap: 1rem;
-  }
-
-  .next {
-    margin-right: 5px;
-    margin-top: -5rem;
-  }
-
-  .title {
-    transform: scale(0.8);
-    margin-top: -1rem;
-    margin-bottom: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-items: center;
+  .title h1 {
+    top: 5vh;
+    left: 3vw;
+    transform: scale(0.7);
   }
 
   :root {
-    --tile-size: 15px;
+    --tile-size: 16px;
     --border-width: 5px;
   }
 
   .game-info {
-    margin-left: -2rem;
-    margin-top: -6rem;
+    margin-top: -4rem;
   }
 
   button {
-    padding: 4px;
-    border-radius: 5px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 15px;
-    margin-top: 3rem;
-    margin-left: -3px;
+    padding: 0.8px;
+    font-size: 14px;
+    margin-top: 2rem;
   }
 }
-
-/* Responsive Web Design */
-@media (orientation: portrait) and (min-width: 768px) {
-  .game-container {
-    margin-top: -1.5rem;
+/* Extra Small Devices (less than 320px) */
+@media screen and (orientation: portrait) and (max-width: 320px) {
+  .audio-controls {
+    top: 0.2rem;
+    right: 0.6rem;
   }
 
-  .audio-controls {
-    margin-top: 2rem;
+  .game-container {
+    top: 18vh;
   }
 
   .controls-container {
-    justify-content: space-evenly;
-    margin-top: -3rem;
+    margin: 0;
+    flex-wrap: fit-content;
+    justify-content: center;
   }
 
-  .game-over {
-    transform: scale(1);
-  }
-
-  .pastScores {
-    transform: scale(1.2);
-    margin-top: 5rem;
-  }
-
-  .upcoming {
-    gap: 1rem;
-  }
-
-  .next {
-    margin-right: 3px;
-    margin-top: -2rem;
-    transform: scale(1.25);
+  .title h1 {
+    opacity: 0.5;
+    margin-top: 0;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.6);
   }
 
   :root {
-    --tile-size: 20px;
-    --border-width: 8px;
+    --tile-size: 15px;
+    --border-width: 3px;
   }
 
+  .game-container {
+    margin-top: 1px;
+  }
   .game-info {
-    margin-left: 3px;
-    margin-top: -2rem;
-    transform: scale(1.7);
-  }
-
-  button {
-    padding: 10px;
-    border-radius: 5px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 11px;
-    margin-top: 1rem;
-  }
-}
-
-/* Responsive Web Design */
-@media (orientation: portrait) and (min-width: 912px) {
-  .controls-container {
-    justify-content: space-around;
-  }
-
-  .game-over {
-    transform: scale(1.3);
-  }
-
-  .pastScores {
-    transform: scale(1.5);
-  }
-
-  .upcoming {
-    gap: 1rem;
+    transform: scale(0.8);
+    font-size: 1.5rem;
+    gap: 5rem;
+    margin-right: -18px;
+    margin-left: -18px;
   }
 
   .next {
+    transform: scale(0.7);
+    font-size: 1.5rem;
+    margin-right: -18px;
+    margin-left: -18px;
+  }
+
+  button {
+    transform: scale(0.7);
+    font-size: 12px;
+    padding: 0.7px;
+  }
+
+  .game-over {
+    transform: scale(0.8);
+  }
+}
+
+@media screen and (orientation: landscape) and (max-width: 320px) {
+  .audio-controls {
+    top: 0.5rem;
+    right: 0.3rem;
+  }
+
+  .game-container {
+    top: 12vh;
+  }
+
+  .controls-container {
+    margin-top: -2.5rem;
+  }
+
+  .title h1 {
+    top: 6vh;
+    left: 2vw;
+    transform: scale(0.7);
+  }
+
+  :root {
+    --tile-size: 15px;
+    --border-width: 4px;
+  }
+
+  .game-info {
+    margin-top: -5rem;
+  }
+
+  button {
+    padding: 0.7px 2.2px;
+    font-size: 12px;
+    margin-top: 2.2rem;
+  }
+}
+
+/* Small Devices (from 481px to 767px) */
+@media screen and (orientation: portrait) and (min-width: 481px) and (max-width: 767px) {
+  .audio-controls {
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .game-container {
+    top: 28vh;
+  }
+
+  .controls-container {
+    margin-top: -4.5rem;
+  }
+
+  .title h1 {
+    margin-top: 0;
+    top: 7%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.7);
+    opacity: 0.3;
+  }
+
+  :root {
+    --tile-size: 25px;
+    --border-width: 5px;
+  }
+
+  .game-info {
+    margin-top: -6.5rem;
+  }
+
+  .next {
+    transform: scale(0.8);
     font-size: 2rem;
   }
 
-  .title {
-    transform: scale(1);
+  .score {
+    font-size: 1.5rem;
+  }
+
+  button {
+    padding: 1.2px 3.5px;
+    font-size: 16px;
+    margin-top: 3.5rem;
+  }
+}
+
+@media screen and (orientation: landscape) and (min-width: 481px) and (max-width: 767px) {
+  .react-audio-player {
+    display: none;
+  }
+
+  .audio-controls {
+    position: absolute;
+    top: -1rem;
+    right: 1rem;
+    transform: scale(0.8);
+  }
+
+  .game-container {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%) scale(1.1);
+  }
+
+  .controls-container {
+    position: absolute;
+    bottom: -1vh;
+    right: -8vw;
+  }
+  .title h1 {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%) scale(1.5);
+    opacity: 0.2;
+  }
+
+  :root {
+    --tile-size: 13px;
+    --border-width: 3px;
+  }
+
+  .next {
     margin-top: 0rem;
-    margin-bottom: 5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-items: center;
+    transform: scale(0.7);
+    font-size: 1.5rem;
+  }
+
+  .game-info {
+    transform: scale(0.8);
+  }
+
+  button {
+    padding: 1px 3px;
+    font-size: 15.5px;
+    margin-top: 3.3rem;
+  }
+
+  .game-over {
+    transform: scale(0.4);
+    position: absolute;
+    top: 5vh;
+  }
+}
+
+/* Medium Devices (from 768px to 1023px) */
+@media screen and (orientation: portrait) and (min-width: 768px) and (max-width: 1023px) {
+  .react-audio-player {
+    transform: scale(1.8);
+  }
+
+  .audio-controls {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+  }
+
+  .game-container {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .controls-container {
+    margin-top: -4rem;
+  }
+
+  .title h1 {
+    margin-top: 0;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%) scale(1);
   }
 
   :root {
     --tile-size: 30px;
-    --border-width: 9px;
+    --border-width: 6px;
+  }
+  .next {
+    transform: scale(0.8);
+    font-size: 3rem;
   }
 
-  .score {
-    font-size: 1.5rem;
+  .game-info {
+    margin-top: -5rem;
+    margin-left: 0.5rem;
+    transform: scale(1.25);
   }
 
+  .score,
   .timer {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   button {
     padding: 8px;
-    font-size: 10px;
-    margin-top: 2rem;
-    transform: scale(1.5);
-    margin-left: 9px;
-    margin-right: 9px;
-  }
-}
-
-/* Responsive Web Design - Tablet*/
-@media (orientation: portrait) and (min-width: 1024px) {
-  .controls-container {
-    justify-content: space-around;
-    margin-right: -2rem;
-  }
-
-  .game-over {
-    transform: scale(0.85);
-    margin-top: -2rem;
-  }
-
-  .pastScores {
-    transform: scale(1.4);
+    font-size: 1.3rem;
     margin-top: 3rem;
   }
 
-  .upcoming {
-    gap: 1rem;
-  }
-
-  .next {
-    font-size: 1.2rem;
-    margin-right: -17rem;
-    margin-top: -2rem;
-    transform: scale(1.2);
-  }
-
-  .board {
-    margin-left: 4rem;
-  }
-
-  .game-info {
-    margin-left: -10rem;
-    margin-top: -5rem;
-    transform: scale(1.4);
-    gap: 2rem;
-  }
-
-  .title {
-    transform: scale(0.85);
-    margin-top: -1rem;
-    margin-bottom: 0.7rem;
-    margin-right: -4rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-items: center;
-  }
-
-  :root {
-    --tile-size: 17px;
-    --border-width: 2px;
-  }
-
-  .score {
-    font-size: 1rem;
-  }
-
-  .timer {
-    font-size: 1rem;
-  }
-
-  button {
-    padding: 3px;
-    font-size: 7px;
-    margin-top: 18px;
-    transform: scale(1);
-    margin-left: 1px;
-    margin-right: 1px;
+  .game-over {
+    transform: scale(1.3);
+    margin-top: -10rem;
   }
 }
 
-@media (orientation: landscape) and (min-width: 667px) {
-  .controls-container {
-    justify-content: space-none;
-    margin-right: -5rem;
+/* Landscape mode for Medium Devices (from 768px to 1023px) */
+@media screen and (orientation: landscape) and (min-width: 768px) and (max-width: 1023px) {
+  .react-audio-player {
+    display: none;
+  }
+
+  .audio-controls {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
   }
 
   .game-container {
-    margin-left: -4rem;
-    margin-top: -3.5rem;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+  }
+
+  .controls-container {
+    position: absolute;
+    bottom: -1vh;
+    right: -3vw;
+  }
+
+  .title h1 {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%) scale(1.5);
+    opacity: 0.2;
+  }
+
+  :root {
+    --tile-size: 15px;
+    --border-width: 3px;
+  }
+
+  .next {
+    margin-top: 0rem;
+    transform: scale(0.7);
+    font-size: 1.5rem;
+  }
+
+  .game-info {
+    margin-top: -1rem;
+    transform: scale(0.9);
+  }
+
+  button {
+    padding: 1.2px;
+    font-size: 16px;
+    margin-top: 1.5rem;
   }
 
   .game-over {
-    transform: scale(0.55);
-    margin-top: -8.5rem;
+    position: absolute;
+    top: 8vh;
+  }
+}
+
+/* Large Devices (from 1024px to 1365px) */
+@media screen and (orientation: portrait) and (min-width: 1024px) and (max-width: 1365px) {
+  .react-audio-player {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%) scale(1.7);
   }
 
-  .pastScores {
-    transform: scale(1.1);
-    margin-top: 0rem;
+  .audio-controls {
+    margin-bottom: 3rem;
+    transform: scale(1.5);
   }
 
-  .score {
-    font-size: 15px;
+  .game-container {
+    margin-top: 1rem;
+  }
+
+  .controls-container {
+    margin-top: -5.5rem;
+  }
+
+  .title h1 {
+    position: absolute;
+    top: 3vh;
+    left: 33vw;
+    transform: scale(1.7);
+    opacity: 0.7;
+  }
+
+  :root {
+    --tile-size: 40px;
+    --border-width: 8px;
+  }
+
+  .game-info {
+    margin-top: -8rem;
+  }
+
+  .score,
+  .timer {
+    font-size: 2.5rem;
+  }
+
+  .next {
+    font-size: 3rem;
+    transform: scale(0.8);
   }
 
   .upcoming {
-    gap: 1rem;
-  }
-
-  .next {
-    font-size: 1.2rem;
-    margin-right: -12rem;
-    margin-top: -2rem;
-    transform: scale(1);
-  }
-
-  .board {
-    margin-left: 2rem;
-  }
-
-  .game-info {
-    margin-left: -3rem;
-    margin-top: -5rem;
-    transform: scale(1.3);
-    gap: 0rem;
-  }
-
-  .title {
-    transform: scale(0.35);
-    margin-top: -3rem;
-    margin-bottom: 0.7rem;
-    margin-right: 0rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-items: center;
-  }
-
-  :root {
-    --tile-size: 7px;
-    --border-width: 3px;
-  }
-
-  .earnedScore {
-    font-size: 2.5rem;
-    margin-top: 5px;
-  }
-
-  .timer {
-    font-size: 12px;
+    gap: 2rem;
   }
 
   button {
-    transform: scale(0.5);
-    margin-top: 35px;
-    margin-left: -8px;
+    padding: 2px 7px;
+    font-size: 2rem;
+    margin-top: 4.5rem;
   }
 
-  .custom {
-    margin-top: -8rem;
-    margin-left: 9rem;
-  }
-}
-
-@media (orientation: landscape) and (min-width: 720px) {
-  .app {
-    transform: scale(1);
-  }
-  .title h1 {
-    display: none;
-  }
-  .audio-controls {
-    transform: scale(0.7);
-  }
-  .audio {
-    transform: scale(0.5);
-  }
-  .game-container {
-    margin-top: 0rem;
-  }
-  .game-info {
-    margin-left: -5rem;
-    margin-top: -7rem;
-    transform: scale(1.1);
-  }
-  :root {
-    --tile-size: 8px;
-    --border-width: 3px;
-  }
-  button {
-    transform: scale(0.4);
-    padding: 6px;
-    justify-content: center;
-  }
-}
-
-@media (orientation: landscape) and (min-width: 914px) {
-  .app {
-    transform: scale(1.2);
-  }
-  .game-info {
-    margin-left: -6rem;
-    margin-top: -rem;
-    transform: scale(1.2);
-  }
-  button {
-    transform: scale(0.4);
-  }
-}
-
-@media (orientation: landscape) and (min-width: 1024px) {
-  .app {
+  .game-over {
     transform: scale(1.5);
-  }
-  :root {
-    --tile-size: 7px;
-    --border-width: 3px;
-  }
-  .audio-controls {
-    transform: scale(1.3);
-    margin-bottom: 2rem;
-  }
-  button {
-    transform: scale(0.5);
+    margin-top: -15rem;
   }
 }
 
-@media (orientation: landscape) and (min-width: 1280px) {
-  .app {
-    transform: scale(2.5);
+/* Landscape mode for Large Devices (from 1024px to 1365px) */
+@media screen and (orientation: landscape) and (min-width: 1024px) and (max-width: 1365px) {
+  .react-audio-player {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    transform: scale(0.8);
   }
-  .next {
+
+  .audio-controls {
+    position: absolute;
+    top: 4rem;
+    right: 9rem;
+  }
+
+  .game-container {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.9);
+  }
+
+  .controls-container {
     margin-top: -3rem;
   }
+
+  .title h1 {
+    position: absolute;
+    top: 1vh;
+    left: 35vw;
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  :root {
+    --tile-size: 25px;
+    --border-width: 5px;
+  }
+
+  .next {
+    transform: scale(0.8);
+    font-size: 2.5rem;
+  }
+
   .game-info {
-    margin-left: -6rem;
-    margin-top: -8rem;
+    margin-top: -5.5rem;
+  }
+
+  .score,
+  .timer {
+    font-size: 1.5rem;
+    gap: 0.5rem;
+  }
+
+  button {
+    padding: 7px;
+    font-size: 20px;
+    margin-top: 1rem;
+  }
+
+  .game-over {
+    transform: scale(1.2);
+    margin-top: -15rem;
+  }
+}
+
+/* Extra Large Devices (from 1366px and above) */
+@media screen and (orientation: portrait) and (min-width: 1366px) {
+  .audio-controls {
+    top: 3rem;
+    right: 3rem;
+  }
+
+  .game-container {
+    top: 40vh;
+  }
+
+  .controls-container {
+    margin-top: -6rem;
+  }
+
+  .title h1 {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  :root {
+    --tile-size: 26px;
+    --border-width: 10px;
+  }
+
+  .game-info {
+    margin-top: -9rem;
+  }
+
+  button {
+    padding: 2.5px 6px;
+    font-size: 20px;
+    margin-top: 5rem;
+  }
+}
+
+/* Landscape mode for Extra Large Devices (from 1366px and above) */
+@media screen and (orientation: landscape) and (min-width: 1366px) {
+  .react-audio-player {
+    transform: scale(1.7);
+  }
+
+  .audio-controls {
+    position: absolute;
+    top: 1rem;
+    right: 18rem;
     transform: scale(1.2);
   }
-  :root {
-    --tile-size: 5px;
-    --border-width: 3px;
+
+  .game-container {
+    margin-top: 0.5rem;
   }
+
+  .controls-container {
+    flex: wrap;
+    justify-content: center;
+    margin-top: -6rem;
+  }
+
+  .title h1 {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) scale(2);
+    opacity: 0.3;
+  }
+
+  :root {
+    --tile-size: 35px;
+    --border-width: 7px;
+  }
+
+  .next {
+    transform: scale(0.9);
+    gap: 1rem;
+    font-size: 2.5rem;
+  }
+
+  .game-info {
+    margin-top: -5.5rem;
+  }
+
+  .score,
+  .timer {
+    font-size: 2.5rem;
+    gap: 0.5rem;
+  }
+
   button {
-    transform: scale(0.4);
+    width: 3.5rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+    margin-top: 3.5rem;
+  }
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .game-over {
+    transform: scale(1.5);
+    margin-top: 3rem;
   }
 }
