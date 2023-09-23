@@ -516,8 +516,22 @@ button {
   }
 
   .controls-container {
-    margin-left: 0rem;
-    margin-top: -6rem;
+    position: absolute;
+    bottom: 4vh;
+    right: 50%;
+    gap: 0;
+  }
+
+  .directional-controls {
+    position: absolute;
+    right: 10vw;
+    gap: 0;
+  }
+
+  .ab-controls {
+    position: absolute;
+    left: 1vw;
+    gap: 0;
   }
 
   .game-over {
@@ -557,7 +571,7 @@ button {
   }
 
   button {
-    padding: 1px;
+    padding: 2px;
     border-radius: 5px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -615,9 +629,19 @@ button {
   }
 
   .controls-container {
-    margin: 0;
-    flex-wrap: fit-content;
-    justify-content: center;
+    position: absolute;
+    bottom: 1vh;
+    right: 50%;
+  }
+
+  .directional-controls {
+    position: absolute;
+    right: 1vw;
+  }
+
+  .ab-controls {
+    position: absolute;
+    left: 10vw;
   }
 
   .title h1 {
@@ -633,9 +657,6 @@ button {
     --border-width: 3px;
   }
 
-  .game-container {
-    margin-top: 1px;
-  }
   .game-info {
     transform: scale(0.8);
     font-size: 1.5rem;
@@ -652,7 +673,7 @@ button {
   }
 
   button {
-    transform: scale(0.7);
+    transform: scale(1);
     font-size: 12px;
     padding: 0.7px;
   }
@@ -710,7 +731,20 @@ button {
   }
 
   .controls-container {
-    margin-top: -4.5rem;
+    position: absolute;
+    bottom: 5vh;
+    right: 50%;
+    transform: translateX(-50%);
+  }
+
+  .directional-controls {
+    position: absolute;
+    right: 10vw;
+  }
+
+  .ab-controls {
+    position: absolute;
+    left: 10vw;
   }
 
   .title h1 {
@@ -740,7 +774,7 @@ button {
   }
 
   button {
-    padding: 1.2px 3.5px;
+    padding: 1.5px 4px;
     font-size: 16px;
     margin-top: 3.5rem;
   }
@@ -767,9 +801,21 @@ button {
 
   .controls-container {
     position: absolute;
-    bottom: -1vh;
-    right: -8vw;
+    bottom: 12vh;
+    right: 50%;
+    transform: translateX(-50%);
   }
+
+  .directional-controls {
+    position: absolute;
+    right: 10vw;
+  }
+
+  .ab-controls {
+    position: absolute;
+    left: 10vw;
+  }
+
   .title h1 {
     position: absolute;
     top: 35%;
@@ -827,7 +873,21 @@ button {
   }
 
   .controls-container {
-    margin-top: -4rem;
+    position: absolute;
+    bottom: 1vh;
+    right: 50%;
+  }
+
+  .directional-controls {
+    position: absolute;
+    right: 10vw;
+    gap: 5px;
+  }
+
+  .ab-controls {
+    position: absolute;
+    left: 10vw;
+    gap: 5px;
   }
 
   .title h1 {
@@ -861,6 +921,7 @@ button {
     padding: 8px;
     font-size: 1.3rem;
     margin-top: 3rem;
+    transform: scale(1.2);
   }
 
   .game-over {
@@ -890,8 +951,18 @@ button {
 
   .controls-container {
     position: absolute;
-    bottom: -1vh;
-    right: -3vw;
+    bottom: 15vh;
+    right: 50%;
+  }
+
+  .directional-controls {
+    position: absolute;
+    right: 18vw;
+  }
+
+  .ab-controls {
+    position: absolute;
+    left: 18vw;
   }
 
   .title h1 {
@@ -1012,13 +1083,25 @@ button {
 
   .game-container {
     position: absolute;
-    top: 20%;
+    top: 15%;
     left: 50%;
     transform: translateX(-50%) scale(0.9);
   }
 
   .controls-container {
-    margin-top: -3rem;
+    position: absolute;
+    bottom: 5vh;
+    right: 50%;
+  }
+
+  .directional-controls {
+    position: absolute;
+    right: 15vw;
+  }
+
+  .ab-controls {
+    position: absolute;
+    left: 15vw;
   }
 
   .title h1 {
@@ -1116,9 +1199,19 @@ button {
   }
 
   .controls-container {
-    flex: wrap;
-    justify-content: center;
-    margin-top: -6rem;
+    position: absolute;
+    bottom: 5vh;
+    right: 50%;
+  }
+
+  .directional-controls {
+    position: absolute;
+    right: 15vw;
+  }
+
+  .ab-controls {
+    position: absolute;
+    left: 15vw;
   }
 
   .title h1 {
