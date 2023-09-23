@@ -142,14 +142,16 @@ function App() {
                 dropInterval={0}
                 tetrominoCellClassName="cell committed"
               />
-              <Controls
-                moveLeft={handleMoveLeft}
-                moveDown={handleMoveDown}
-                moveRight={handleMoveRight}
-                rotate={handleRotate}
-                drop={hardDrop}
-                hold={swapWithHold}
-              />
+              {!isPaused && (
+                <Controls
+                  moveLeft={handleMoveLeft}
+                  moveDown={handleMoveDown}
+                  moveRight={handleMoveRight}
+                  rotate={handleRotate}
+                  drop={hardDrop}
+                  hold={swapWithHold}
+                />
+              )}
             </div>
 
             <GameInfo
