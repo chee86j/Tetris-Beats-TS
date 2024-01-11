@@ -48,6 +48,9 @@ In Tetris Beat TS, customization is key. Craft your own experience by choosing y
 Whether you're chasing high scores or indulging in a moment of relaxation, Tetris Beat TS adapts to your desires, offering an
 experience that's as unique as you are.
 
+# Try the Live Site
+https://ts-tetris.onrender.com/
+
 # Getting Started
 
 To run this app locally, follow these steps:
